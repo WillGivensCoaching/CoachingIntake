@@ -16,6 +16,7 @@
             background-color: #1a1a1a;
             color: #e0e0e0;
             line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
         }
 
         /* Header and Navigation */
@@ -37,7 +38,7 @@
             font-weight: 700;
             color: #e74c3c;
             letter-spacing: 1px;
-            font-family: 'Poppins', sans-serif; /* New font for the logo */
+            font-family: 'Poppins', sans-serif;
         }
         .header .nav a {
             color: #d0d0d0;
@@ -142,6 +143,18 @@
             max-width: 800px;
             margin: auto;
         }
+        
+        /* New Email Contact Section Styling */
+        .email-contact-section {
+            padding: 50px;
+            text-align: center;
+        }
+        .email-contact-section p {
+            font-size: 24px;
+            font-weight: 600;
+            color: #e74c3c;
+            margin-top: 20px;
+        }
 
         /* Coaching Services Section Styling */
         .services-section {
@@ -245,7 +258,7 @@
     <header class="header">
         <div class="logo">Will Givens</div>
         <nav class="nav">
-            <a href="mailto:welcome@willgivens.com">Contact</a>
+            <a href="#email-contact">Contact</a>
             <a href="#about">About</a>
             <a href="#coaching-services">Coaching Services</a>
         </nav>
@@ -336,15 +349,29 @@
                     <strong>Hand History Reviews</strong>
                     <p>Submit your own hands for detailed video or written critiques from Will's team of hand-picked coaches.</p>
                 </li>
+                <li>
+                    <strong>Community Forums and Discussion Boards</strong>
+                    <p>Join a private community to discuss hands, share strategies, and interact with coaches and other students.</p>
+                </li>
+                <li>
+                    <strong>Personalized 1-on-1 Coaching</strong>
+                    <p>The most exclusive tier for serious players, offering private sessions with Will Givens himself.</p>
+                </li>
+                <li>
+                    <strong>Drills and Quizzes</strong>
+                    <p>Practice and internalize concepts with interactive tools like a hand reading trainer, quizzes on specific situations, and pre-flop range quizzes.</p>
                 </li>
             </ul>
-            
-            <div class="email-cta">
-                <h2>Ready to Start Your Journey to Greatness?</h2>
-                <a href="mailto:welcome@willgivens.com" class="cta-button">Email Now</a>
-            </div>
         </section>
-
+        
+        <div class="section-separator"></div>
+        
+        <section id="email-contact" class="email-contact-section">
+            <h2>Contact Us</h2>
+            <p>For more information or to inquire about coaching, please email us directly at:</p>
+            <p style="color: #e74c3c; font-size: 28px; margin-top: 10px;">welcome@willgivens.com</p>
+            <a href="mailto:welcome@willgivens.com" class="cta-button">Email Now</a>
+        </section>
     </main>
 
 </body>
