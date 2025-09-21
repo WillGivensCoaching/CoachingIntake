@@ -15,21 +15,6 @@
             line-height: 1.6;
         }
 
-        /* Top Banner */
-        .top-banner {
-            background-color: #000000;
-            color: #e74c3c;
-            text-align: center;
-            padding: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1001;
-            box-sizing: border-box;
-        }
-
         /* Header and Navigation */
         .header {
             display: flex;
@@ -39,7 +24,7 @@
             background-color: #000000;
             position: fixed;
             width: 100%;
-            top: 40px; /* Adjusted to sit below the new top banner */
+            top: 0;
             z-index: 1000;
             box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
             box-sizing: border-box;
@@ -61,16 +46,31 @@
         .header .nav a:hover {
             color: #e74c3c;
         }
-
+        
         /* Main Content Section */
         .content-section {
-            padding: 160px 50px 50px; /* Adjusted to accommodate both headers */
+            padding: 120px 50px 50px;
             max-width: 1200px;
             margin: auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
             align-items: center;
+        }
+
+        /* New Banner Text Styling */
+        .hero-banner {
+            text-align: center;
+            padding-top: 100px;
+            padding-bottom: 20px;
+        }
+        .hero-banner h1 {
+            font-size: 40px;
+            color: #e74c3c;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 0;
+            text-transform: uppercase;
         }
         
         /* Left Content - Text and CTA */
@@ -145,6 +145,7 @@
             color: #ffffff;
             margin-top: 40px;
             margin-bottom: 20px;
+            text-align: center; /* Centered headers */
         }
 
         .services-list, .tiers-list {
@@ -190,10 +191,6 @@
 </head>
 <body>
 
-    <div class="top-banner">
-        I want to help you win a bracelet!
-    </div>
-
     <header class="header">
         <div class="logo">Will Givens</div>
         <nav class="nav">
@@ -204,6 +201,10 @@
     </header>
 
     <main>
+        <div class="hero-banner">
+            <h1>I want to help you win a bracelet! 🏆</h1>
+        </div>
+
         <section class="content-section">
             <div class="text-content">
                 <h1>Will Givens: Your Path to Poker Greatness</h1>
