@@ -3,221 +3,327 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will Givens Poker Coaching</title>
+    <title>Izabella Marie Weddings | Modern Wedding Planning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Basic CSS for a clean and professional look */
+        /* General Body and Container Styling */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #0d1117; /* Dark background for a sleek, modern feel */
-            color: #c9d1d9; /* Light gray text for readability */
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: #161b22;
-            color: #fff;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.8rem;
-            font-weight: 700;
-        }
-
-        header p {
-            margin: 0.5rem 0 0;
-            font-size: 1.3rem;
-            color: #8b949e;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            line-height: 1.7;
         }
 
         .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px;
         }
 
-        .hero-section {
+        /* Header and Navigation */
+        header {
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Space out the logo and nav */
+            align-items: center; /* Vertically align items */
+            padding: 30px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em; /* Smaller font size for logo */
+            margin: 0;
+            color: #ff3b3f;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .logo p {
+            display: none; /* Hide the tagline in the header to save space */
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #cccccc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff3b3f;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
             text-align: center;
-            padding: 3rem 2rem;
-            background-color: #1f2a37;
+            color: white;
+            padding: 120px 30px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1500x800/222222/ffffff?text=Modern+Wedding+Hero') no-repeat center center/cover;
             border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            margin-bottom: 2rem;
-            border: 1px solid #30363d;
+            overflow: hidden;
+            margin: 40px 0;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
         }
 
-        .hero-section img { /* Styling for the image */
-            max-width: 100%; /* Ensures image is responsive */
-            height: auto;
-            border-radius: 8px; /* Slightly rounded corners for the image */
-            margin-bottom: 2rem; /* Space below the image */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        .hero-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .hero-section h2 {
-            font-size: 2.2rem;
-            color: #58a6ff; /* A vibrant blue for a key highlight */
-        }
-
-        .hero-section p {
-            font-size: 1.2rem;
+        .hero-text p {
+            font-size: 1.4em;
+            font-weight: 300;
             max-width: 700px;
-            margin: 1.5rem auto;
+            margin: 0 auto 30px auto;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: #58a6ff;
-            color: #0d1117;
-            padding: 0.9rem 2.5rem;
+            padding: 18px 40px;
+            background-color: #ff3b3f;
+            color: white;
             text-decoration: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
         .cta-button:hover {
-            background-color: #4282c4;
+            background-color: #e02a2e;
             transform: translateY(-2px);
         }
-
+        
+        /* Section Styling */
         .section {
-            background-color: #1f2a37;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-            border: 1px solid #30363d;
-        }
-
-        .section h3 {
-            color: #58a6ff;
-            border-bottom: 2px solid #2f3a4b;
-            padding-bottom: 0.7rem;
-            margin-top: 0;
-            font-size: 1.8rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            padding: 60px 0;
             text-align: center;
-            margin-top: 1.5rem;
+            background-color: #242424;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        .stat-item {
-            background-color: #2e3a4b;
-            padding: 1.5rem;
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            color: #ff3b3f;
+            letter-spacing: 1px;
+        }
+
+        /* Services and About Us Layout */
+        .services, .about-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .service-item, .about-item {
+            flex-basis: 30%;
+            min-width: 280px;
+            padding: 30px;
+            background-color: #1a1a1a;
             border-radius: 10px;
-            border: 1px solid #30363d;
-            transition: transform 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            margin-bottom: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
         }
 
-        .stat-item:hover {
-            transform: scale(1.03);
+        .service-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.5);
         }
 
-        .stat-item h4 {
-            margin: 0;
-            font-size: 2.5rem;
-            color: #fff;
-            font-weight: 700;
+        .service-item h3 {
+            font-family: 'Playfair Display', serif;
+            color: #ff3b3f;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
         }
 
-        .stat-item p {
-            margin: 0.5rem 0 0;
-            font-size: 1rem;
-            color: #8b949e;
+        .service-item p {
+            color: #b0b0b0;
         }
 
-        ul {
-            list-style-type: none;
-            padding-left: 0;
+        .about-item {
+            flex-basis: 100%;
+            text-align: center;
+            padding: 40px;
         }
 
-        ul li {
-            background-color: #2e3a4b;
-            margin-bottom: 0.8rem;
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid #30363d;
+        .about-item p {
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #cccccc;
+        }
+        
+        a {
+            color: #ff3b3f;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
 
+        a:hover {
+            color: #e02a2e;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 1.5rem 0;
-            color: #8b949e;
-            font-size: 0.9rem;
+            padding: 30px;
+            background-color: #121212;
+            color: #777777;
+            border-top: 1px solid #333;
+            margin-top: 40px;
+            border-radius: 12px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding-bottom: 20px;
+            }
+            .logo h1 {
+                font-size: 2em;
+                margin-bottom: 15px;
+            }
+            nav ul {
+                gap: 15px;
+            }
+            .hero {
+                padding: 80px 20px;
+            }
+            .hero-text h2 {
+                font-size: 2.2em;
+            }
+            .hero-text p {
+                font-size: 1.1em;
+            }
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+            .section {
+                padding: 40px 0;
+            }
+            .section h2 {
+                font-size: 2em;
+            }
+            .services, .about-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .service-item, .about-item {
+                flex-basis: 100%;
+                min-width: unset;
+                padding: 25px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Will Givens Poker Coaching</h1>
-        <p>Your Journey to Poker Excellence Starts Here</p>
-    </header>
-
     <div class="container">
-        
-        <div class="hero-section">
-            <img src="will-givens-wsop-winner.jpg" alt="Will Givens - WSOP Bracelet Winner holding playing cards and trophy" />
-            <h2>Learn from a World-Class Professional</h2>
-            <p>Ready to master the game and see significant results? Will Givens, a WSOP Bracelet Winner and seasoned poker pro, offers personalized coaching to help you transform your game and achieve your poker goals.</p>
-            <a href="mailto:welcome@willgivens.com" class="cta-button">Email Will to Book Your Session</a>
-        </div>
+        <header>
+            <div class="logo">
+                <h1>Izabella Marie Weddings</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#coaching">Coaching</a></li>
+                </ul>
+            </nav>
+        </header>
 
-        <div class="section">
-            <h3>Will's Proven Success at the Highest Levels</h3>
-            <p>With a career spanning over a decade, Will Givens has consistently proven his ability to compete and win against the world's best. His extensive resume is a testament to his expertise and includes:</p>
-            
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h4>WSOP</h4>
-                    <p>BRACELET WINNER</p>
-                </div>
-                <div class="stat-item">
-                    <h4>$3.3M+</h4>
-                    <p>TOTAL LIVE EARNINGS</p>
-                </div>
-                <div class="stat-item">
-                    <h4>$300k+</h4>
-                    <p>LARGEST SINGLE CASH</p>
+        <section class="hero">
+            <div class="hero-text">
+                <h2>Your Vision, Our Expertise, A Flawless Day</h2>
+                <p>Sophisticated wedding planning and bespoke design for couples who desire a truly distinctive celebration.</p>
+                <a href="mailto:connect@izabellamarieweddings.com" class="cta-button">Get a Quote</a>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <h2>About Izabella Marie Weddings</h2>
+            <div class="about-content">
+                <div class="about-item">
+                    <p>Based in the vibrant heart of **Dallas, Texas**, Izabella Marie Weddings specializes in bringing contemporary elegance and seamless execution to every celebration. We are passionate about creating events that are not only beautiful but deeply personal, reflecting the unique style and story of each couple.</p>
+                    <p>Our approach combines meticulous planning with innovative design, ensuring every detail, from grand gestures to intimate touches, is perfectly aligned with your vision. Trust us to transform your dream day into a stunning reality.</p>
                 </div>
             </div>
-            
-            <p style="margin-top: 1.5rem;">His track record is a clear indicator that he understands what it takes to succeed, from small tournaments to the biggest stages in poker.</p>
-        </div>
+        </section>
 
-        <div class="section">
-            <h3>What You Can Expect from Coaching</h3>
-            <p>Whether you're a serious amateur or an aspiring pro, Will's coaching is not a one-size-fits-all approach. It is a customized plan designed to pinpoint your specific weaknesses and build on your strengths. Key areas of focus include:</p>
-            <ul>
-                <li><strong>Mindset & Mental Game:</strong> Learn to manage tilt, stay focused, and make optimal decisions under pressure.</li>
-                <li><strong>GTO & Exploitative Play:</strong> Understand both game theory optimal strategies and how to exploit your opponents' leaks.</li>
-                <li><strong>Tournament Mastery:</strong> Develop a comprehensive strategy for every stage of a tournament, from early-stage accumulation to final table play.</li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h3>Ready to Elevate Your Game?</h3>
-            <p>To inquire about coaching availability, packages, and pricing, please send an email directly to Will.</p>
-            <div style="text-align: center; margin-top: 1rem;">
-                <a href="mailto:welcome@willgivens.com" class="cta-button">Get Started Now</a>
+        <section class="section">
+            <h2>Our Modern Services</h2>
+            <div class="services">
+                <div class="service-item">
+                    <h3>Signature Planning</h3>
+                    <p>Comprehensive planning, design, and coordination from engagement to farewell brunch, ensuring every detail is perfect.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Event Management</h3>
+                    <p>Expert logistics and vendor management for couples who have planned their design but need a professional to execute flawlessly.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Design & Styling</h3>
+                    <p>Tailored aesthetic development, mood board creation, and decor sourcing to curate a truly distinctive atmosphere.</p>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <section class="section" id="coaching">
+            <h2>One-on-One Coaching</h2>
+            <div class="about-content">
+                <div class="about-item">
+                    <p>Beyond our planning services, we offer personalized coaching sessions to help you navigate the wedding planning process with confidence. Our coaching is perfect for DIY couples who need expert guidance and a strategic partner to ensure a smooth and successful event.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <h2>Connect With Us</h2>
+            <div class="about-content">
+                <div class="about-item">
+                    <p>Ready to start planning your perfect day? We would love to hear from you!</p>
+                    <p><a href="mailto:connect@izabellamarieweddings.com">connect@izabellamarieweddings.com</a></p>
+                </div>
+            </div>
+        </section>
 
     </div>
 
     <footer>
-        <p>&copy; 2024 Will Givens Poker Coaching. All Rights Reserved.</p>
+        <p>&copy; 2025 Izabella Marie Weddings. All Rights Reserved.</p>
     </footer>
 
 </body>
