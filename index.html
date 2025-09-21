@@ -10,8 +10,9 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #0d0d0d; /* Darker background */
-            color: #e0e0e0;
+            background-color: #f7f7f7; /* Light gray background for a clean look */
+            color: #333333;
+            line-height: 1.6;
         }
 
         /* Header and Navigation */
@@ -20,21 +21,22 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
-            background-color: rgba(13, 13, 13, 0.9);
+            background-color: #ffffff;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-sizing: border-box; /* Ensures padding doesn't affect width */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+            box-sizing: border-box;
         }
         .header .logo {
             font-size: 28px;
-            font-weight: bold;
-            color: #ffffff;
-            letter-spacing: 2px;
+            font-weight: 700;
+            color: #2c3e50; /* A dark, professional blue-gray */
+            letter-spacing: 1px;
         }
         .header .nav a {
-            color: #ffffff;
+            color: #555555;
             text-decoration: none;
             margin-left: 30px;
             font-weight: 500;
@@ -42,31 +44,32 @@
             text-transform: uppercase;
         }
         .header .nav a:hover {
-            color: #ff3333; /* A brighter red */
+            color: #7f8c8d; /* A soft accent color on hover */
         }
 
         /* Main Content Section */
         .content-section {
-            padding: 120px 50px 50px; /* Top padding to account for fixed header */
+            padding: 120px 50px 50px;
             max-width: 1200px;
             margin: auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 80px;
             align-items: center;
         }
         
         /* Left Content - Text and CTA */
         .text-content h1 {
             font-size: 48px;
-            color: #ffffff;
+            color: #2c3e50;
             margin-bottom: 20px;
             line-height: 1.2;
+            font-weight: 700;
         }
         .text-content p {
             font-size: 18px;
-            line-height: 1.6;
-            color: #b0b0b0;
+            line-height: 1.8;
+            color: #666666;
             margin-bottom: 40px;
         }
         
@@ -75,33 +78,33 @@
             width: 100%;
             height: auto;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 3px solid #ff3333; /* Red border to highlight the image */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
         /* Call-to-Action (CTA) Button */
         .cta-button {
             display: inline-block;
             padding: 15px 40px;
-            background-color: #ff3333;
+            background-color: #2c3e50;
             color: #ffffff;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 50px;
+            border-radius: 5px;
             transition: background-color 0.3s ease-in-out, transform 0.2s;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         .cta-button:hover {
-            background-color: #cc0000;
+            background-color: #34495e;
             transform: translateY(-3px);
         }
 
         /* Subsequent sections for a scrolling site */
         .section-separator {
             height: 1px;
-            background-color: #333333;
-            margin: 50px 0;
+            background-color: #e0e0e0;
+            margin: 50px auto;
+            max-width: 80%;
         }
         .next-section {
             padding: 50px;
@@ -111,7 +114,14 @@
         }
         .next-section h2 {
             font-size: 36px;
-            color: #ff3333;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .next-section p {
+            font-size: 16px;
+            color: #666666;
+            max-width: 800px;
+            margin: auto;
         }
     </style>
 </head>
@@ -141,16 +151,30 @@
         <div class="section-separator"></div>
 
         <section class="next-section">
-            <h2>Why Choose Will Givens?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </section>
+            <h2>About Will Givens</h2>
+            <p>Will Givens is a decorated poker professional with a career spanning over a decade, amassing over $3.3 million in live tournament earnings. His journey is marked by an unwavering dedication to the game and a consistent ability to perform at the highest level. From the high-stakes tables in Las Vegas to major tours across the United States, Will has demonstrated the skill, discipline, and strategic mindset required to dominate the felt, making him an ideal coach for players looking to elevate their game.</p>
+        </section>
         
         <div class="section-separator"></div>
 
         <section class="next-section">
-            <h2>Coaching Services</h2>
-            <p>Tailored coaching plans for every skill level, from beginners to experienced players. </p>
-            </section>
+            <h2>Career Highlights</h2>
+            <p>
+                Will's impressive track record includes a multitude of deep runs, final table appearances, and outright victories against some of the world's best players.
+            </p>
+            <br>
+            <p style="text-align: left; max-width: 800px; margin: auto;">
+                <strong>Largest Cash:</strong> A remarkable 2nd place finish in a **WSOP $600 Deep Stack Championship**, earning him **$245,606**. This cash highlights his ability to navigate massive fields and compete for poker's most prestigious hardware.
+            </p>
+            <br>
+            <p style="text-align: left; max-width: 800px; margin: auto;">
+                <strong>WPT Finalist:</strong> A 6th place finish at the **WPT Venetian Main Event**, a high-profile final table performance that secured a cash of **$87,760**. He also took 4th place at the **WPT Maryland Main Event**, cashing for **$121,112**.
+            </p>
+            <br>
+            <p style="text-align: left; max-width: 800px; margin: auto;">
+                <strong>Consistent Wins:</strong> He has racked up numerous other 1st place finishes in major circuits, including several **WSOP Circuit** events, the **Wynn Millions Poker Series**, and the **WPT Borgata Winter Poker Open**.
+            </p>
+        </section>
 
     </main>
 
