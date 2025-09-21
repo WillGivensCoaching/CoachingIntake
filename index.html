@@ -140,18 +140,24 @@
         }
 
         /* Coaching Services Section Styling */
+        .services-section {
+            text-align: center; /* Centers all content within the section */
+            padding: 50px;
+            max-width: 1200px;
+            margin: auto;
+        }
         .services-section h3 {
             font-size: 24px;
             color: #ffffff;
             margin-top: 40px;
             margin-bottom: 20px;
-            text-align: center; /* Centered headers */
+            text-align: center;
         }
 
         .services-list, .tiers-list {
             list-style: none;
             padding: 0;
-            text-align: left;
+            text-align: center; /* Centers the lists */
             max-width: 800px;
             margin: auto;
             display: grid;
@@ -166,6 +172,7 @@
             font-weight: 500;
             color: #e0e0e0;
             transition: transform 0.2s;
+            text-align: left; /* Keeps the text inside list items left-aligned for readability */
         }
         .services-list li:hover, .tiers-list li:hover {
             transform: translateY(-5px);
