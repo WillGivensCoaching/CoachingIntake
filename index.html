@@ -5,90 +5,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will Givens Poker Coaching</title>
     <style>
-        /* Basic CSS for the page */
+        /* General Body and Font Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000000; /* Main background color */
-            color: #ffffff; /* Default text color */
+            background-color: #0d0d0d; /* Darker background */
+            color: #e0e0e0;
         }
+
+        /* Header and Navigation */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black for the header */
+            background-color: rgba(13, 13, 13, 0.9);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
         }
         .header .logo {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
             color: #ffffff;
+            letter-spacing: 2px;
         }
         .header .nav a {
             color: #ffffff;
             text-decoration: none;
             margin-left: 30px;
-            font-weight: bold;
-            transition: color 0.3s;
+            font-weight: 500;
+            transition: color 0.3s ease-in-out;
+            text-transform: uppercase;
         }
         .header .nav a:hover {
-            color: #ff0000; /* Red on hover */
+            color: #ff3333; /* A brighter red */
         }
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
+
+        /* Main Content Section */
+        .content-section {
+            padding: 120px 50px 50px; /* Top padding to account for fixed header */
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
         }
-        .hero .background-image {
-            position: absolute;
-            top: 0;
-            left: 0;
+        
+        /* Left Content - Text and CTA */
+        .text-content h1 {
+            font-size: 48px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .text-content p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #b0b0b0;
+            margin-bottom: 40px;
+        }
+        
+        /* Right Content - Image */
+        .image-container img {
             width: 100%;
-            height: 100%;
-            background-image: url('will-givens-wsop-winner.jpg');
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.7); /* Darkens the image for better text readability */
-            z-index: 1;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 3px solid #ff3333; /* Red border to highlight the image */
         }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 20px;
-        }
-        .hero-content h1 {
-            font-size: 60px;
-            margin-bottom: 10px;
-            color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        .hero-content p {
-            font-size: 24px;
-            margin-bottom: 30px;
-            color: #ffffff;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
+        
+        /* Call-to-Action (CTA) Button */
         .cta-button {
             display: inline-block;
-            padding: 15px 30px;
-            background-color: #ff0000; /* Red CTA button */
+            padding: 15px 40px;
+            background-color: #ff3333;
             color: #ffffff;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            border-radius: 50px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .cta-button:hover {
-            background-color: #cc0000; /* Darker red on hover */
+            background-color: #cc0000;
+            transform: translateY(-3px);
+        }
+
+        /* Subsequent sections for a scrolling site */
+        .section-separator {
+            height: 1px;
+            background-color: #333333;
+            margin: 50px 0;
+        }
+        .next-section {
+            padding: 50px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+        .next-section h2 {
+            font-size: 36px;
+            color: #ff3333;
         }
     </style>
 </head>
@@ -104,14 +127,31 @@
     </header>
 
     <main>
-        <section class="hero">
-            <div class="background-image"></div>
-            <div class="hero-content">
+        <section class="content-section">
+            <div class="text-content">
                 <h1>Will Givens: Your Path to Poker Greatness</h1>
-                <p>Cashed for over $3.3 million. Your coach for live and online poker.</p>
+                <p>Cashed for over $3.3 million. A WSOP bracelet winner and your coach for mastering live and online poker tournaments.</p>
                 <a href="#" class="cta-button">Book a Strategy Session</a>
             </div>
+            <div class="image-container">
+                <img src="will-givens-wsop-winner.jpg" alt="Will Givens winning a WSOP bracelet">
+            </div>
         </section>
+
+        <div class="section-separator"></div>
+
+        <section class="next-section">
+            <h2>Why Choose Will Givens?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </section>
+        
+        <div class="section-separator"></div>
+
+        <section class="next-section">
+            <h2>Coaching Services</h2>
+            <p>Tailored coaching plans for every skill level, from beginners to experienced players. </p>
+            </section>
+
     </main>
 
 </body>
