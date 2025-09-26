@@ -1,361 +1,400 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will Givens Poker Coaching</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* BASE STYLES & TYPOGRAPHY */
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
+<!DOCTYPE html> 
+ <html lang="en"> 
+ <head> 
+     <meta charset="UTF-8"> 
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+     <title>Will Givens Poker Coaching</title> 
+     <link rel="preconnect" href="https://fonts.googleapis.com"> 
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet"> 
+     <style> 
+         /* General Body and Font Styles */ 
+         body { 
+             font-family: 'Montserrat', sans-serif; 
+             margin: 0; 
+             padding: 0; 
+             background-color: #1a1a1a; 
+             color: #e0e0e0; 
+             line-height: 1.6; 
+             scroll-behavior: smooth; /* Smooth scrolling for anchor links */ 
+         } 
 
-        h1, h2, h3 {
-            font-family: 'Poppins', sans-serif;
-            color: #ffffff;
-            font-weight: 700;
-        }
+         /* Header and Navigation */ 
+         .header { 
+             display: flex; 
+             justify-content: space-between; 
+             align-items: center; 
+             padding: 20px 50px; 
+             background-color: #000000; 
+             position: fixed; 
+             width: 100%; 
+             top: 0; 
+             z-index: 1000; 
+             box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05); 
+             box-sizing: border-box; 
+         } 
+         .header .logo { 
+             font-size: 28px; 
+             font-weight: 700; 
+             color: #e74c3c; 
+             letter-spacing: 1px; 
+             font-family: 'Poppins', sans-serif; 
+         } 
+         .header .nav a { 
+             color: #d0d0d0; 
+             text-decoration: none; 
+             margin-left: 30px; 
+             font-weight: 500; 
+             transition: color 0.3s ease-in-out; 
+             text-transform: uppercase; 
+         } 
+         .header .nav a:hover { 
+             color: #e74c3c; 
+         } 
+          
+         /* Main Content Section */ 
+         .content-section { 
+             padding: 120px 50px 50px; 
+             max-width: 1200px; 
+             margin: auto; 
+             display: grid; 
+             grid-template-columns: 1fr 1fr; 
+             gap: 80px; 
+             align-items: center; 
+         } 
 
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 20px;
-            color: #e74c3c; /* Red highlight */
-        }
-        
-        /* HEADER & NAVIGATION */
-        .header {
-            background-color: #2c3e50; /* Dark blue/grey */
-            color: #fff;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
+         /* New Banner Text Styling */ 
+         .hero-banner { 
+             text-align: center; 
+             padding-top: 100px; 
+             padding-bottom: 20px; 
+         } 
+         .hero-banner h1 { 
+             font-size: 40px; 
+             color: #e74c3c; 
+             font-weight: 700; 
+             letter-spacing: 2px; 
+             margin: 0; 
+             text-transform: uppercase; 
+         } 
+          
+         /* Left Content - Text and CTA */ 
+         .text-content h1 { 
+             font-size: 48px; 
+             color: #ffffff; 
+             margin-bottom: 20px; 
+             line-height: 1.2; 
+             font-weight: 700; 
+         } 
+         .text-content p { 
+             font-size: 18px; 
+             line-height: 1.8; 
+             color: #b0b0b0; 
+             margin-bottom: 40px; 
+         } 
+          
+         /* Right Content - Image */ 
+         .image-container img { 
+             width: 100%; 
+             height: auto; 
+             border-radius: 10px; 
+             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); 
+         } 
+          
+         /* Call-to-Action (CTA) Button */ 
+         .cta-button { 
+             display: inline-block; 
+             padding: 15px 40px; 
+             background-color: #e74c3c; 
+             color: #ffffff; 
+             text-decoration: none; 
+             font-weight: bold; 
+             border-radius: 5px; 
+             transition: background-color 0.3s ease-in-out, transform 0.2s; 
+             text-transform: uppercase; 
+             letter-spacing: 1px; 
+         } 
+         .cta-button:hover { 
+             background-color: #c0392b; 
+             transform: translateY(-3px); 
+         } 
 
-        .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            color: #e74c3c;
-            text-decoration: none;
-        }
-
-        .nav a {
-            color: #e0e0e0;
-            text-decoration: none;
-            margin-left: 20px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: color 0.3s, background-color 0.3s;
-        }
-
-        .nav a:hover {
-            color: #ffffff;
-            background-color: #e74c3c;
-        }
-
-        /* GENERAL LAYOUT */
-        main {
-            padding: 30px 0;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section {
-            padding: 60px 20px;
-            text-align: center;
-        }
-        
-        .section-separator {
-            width: 80px;
-            height: 4px;
-            background-color: #e74c3c;
-            margin: 40px auto;
-            border-radius: 2px;
-        }
-
-        /* FORM STYLES - Inherited from user structure */
-        .coaching-form-container {
+         /* General Section Styling */ 
+         .section-separator { 
+             height: 1px; 
+             background-color: #333333; 
+             margin: 50px auto; 
+             max-width: 80%; 
+         } 
+         .section { 
+             padding: 50px; 
+             max-width: 1200px; 
+             margin: auto; 
+             text-align: center; 
+         } 
+         .section h2 { 
+             font-size: 36px; 
+             color: #ffffff; 
+             margin-bottom: 20px; 
+         } 
+         .section p { 
+             font-size: 16px; 
+             color: #b0b0b0; 
+             max-width: 800px; 
+             margin: auto; 
+         } 
+          
+         /* New Email Contact Section Styling */ 
+         .email-contact-section { 
+             padding: 50px; 
+             text-align: center; 
+         } 
+         .email-contact-section p { 
+             font-size: 24px; 
+             font-weight: 600; 
+             color: #e74c3c; 
+             margin-top: 20px; 
+         } 
+ 
+        /* ADDED STYLE FOR IFRAME CONTAINER TO ENSURE RESPONSIVENESS */
+        .form-container {
             max-width: 800px;
-            margin: 30px auto 0;
-            padding: 40px;
-            background-color: #242424; /* Slightly lighter background for the form block */
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-            text-align: left;
-        }
-
-        .coaching-form-container h3 {
-            color: #e0e0e0;
-            border-bottom: 2px solid #e74c3c;
-            padding-bottom: 10px;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            font-size: 1.4rem;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #e74c3c;
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: none;
+            margin: 20px auto;
             border-radius: 8px;
-            box-sizing: border-box;
-            background-color: #333333;
-            color: #ffffff;
-            font-size: 16px;
-            transition: border-color 0.3s, box-shadow 0.3s;
-            resize: vertical;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
-        
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px #e74c3c;
-        }
-        
-        .form-group textarea {
-            min-height: 100px;
-        }
+ 
+         /* Coaching Services Section Styling */ 
+         .services-section { 
+             text-align: center; 
+             padding: 50px; 
+             max-width: 1200px; 
+             margin: auto; 
+         } 
+         .services-section h3 { 
+             font-size: 24px; 
+             color: #ffffff; 
+             margin-top: 40px; 
+             margin-bottom: 20px; 
+             text-align: center; 
+         } 
 
-        .form-row {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .form-row .form-group {
-            flex: 1;
-            margin-bottom: 0; /* Remove redundant bottom margin here */
-        }
-        
-        /* Form Button */
-        .form-button {
-            background-color: #e74c3c;
-            color: #ffffff;
-            border: none;
-            padding: 15px 35px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
-        }
+         .services-list, .tiers-list { 
+             list-style: none; 
+             padding: 0; 
+             text-align: center; 
+             max-width: 800px; 
+             margin: auto; 
+             display: grid; 
+             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+             gap: 20px; 
+         } 
+         .services-list li, .tiers-list li { 
+             background-color: #2c2c2c; 
+             padding: 30px; 
+             border-radius: 8px; 
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+             font-weight: 500; 
+             color: #e0e0e0; 
+             transition: transform 0.2s; 
+             text-align: left; 
+         } 
+         .services-list li:hover, .tiers-list li:hover { 
+             transform: translateY(-5px); 
+         } 
 
-        .form-button:hover {
-            background-color: #c0392b;
-            transform: translateY(-2px);
-        }
+         .services-list strong, .tiers-list strong { 
+             display: block; 
+             font-size: 18px; 
+             margin-bottom: 10px; 
+             color: #e74c3c; 
+         } 
+         .services-list p, .tiers-list p { 
+             font-size: 14px; 
+             color: #b0b0b0; 
+             line-height: 1.5; 
+         } 
 
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-            }
-            .nav {
-                margin-top: 10px;
-            }
-            .nav a {
-                display: block;
-                margin: 5px 0;
-            }
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
-            .coaching-form-container {
-                padding: 20px;
-            }
-        }
-    </style>
-</head>
-<body>
+         .email-cta { 
+             padding-top: 50px; 
+             text-align: center; 
+         } 
 
-    <header class="header">
-        <a href="#hero" class="logo">Will Givens Coaching</a>
-        <nav class="nav">
-            <a href="#apply">Apply</a>
-            <a href="#services">Coaching Services</a>
-            <a href="#about">About Will</a>
-        </nav>
-    </header>
+         /* Media Query for Mobile Responsiveness */ 
+         @media (max-width: 768px) { 
+             .header { 
+                 padding: 15px 20px; 
+             } 
+             .header .logo { 
+                 font-size: 24px; 
+             } 
+             .header .nav { 
+                 display: none; 
+             } 
+             .content-section { 
+                 grid-template-columns: 1fr; 
+                 padding: 80px 20px 20px; 
+                 gap: 40px; 
+             } 
+             .hero-banner h1 { 
+                 font-size: 28px; 
+                 padding-top: 60px; 
+             } 
+             .text-content h1 { 
+                 font-size: 36px; 
+             } 
+             .text-content p { 
+                 font-size: 16px; 
+             } 
+             .image-container { 
+                 order: -1; 
+             } 
+             .section { 
+                 padding: 30px 20px; 
+             } 
+             .section h2 { 
+                 font-size: 28px; 
+             } 
+             .services-list, .tiers-list { 
+                 grid-template-columns: 1fr; 
+             } 
+         } 
+     </style> 
+ </head> 
+ <body> 
 
-    <main>
-        <!-- Hero Section (Placeholder Content) -->
-        <section id="hero" class="section" style="padding-top: 100px; padding-bottom: 100px;">
-            <h1 style="font-size: 3.5rem; color: #ffffff;">Elevate Your Game. Win Your Bracelet.</h1>
-            <p style="font-size: 1.2rem; max-width: 700px; margin: 20px auto; color: #bdbdbd;">Personalized poker coaching from WSOP bracelet winner Will Givens. Stop guessing and start dominating.</p>
-            <a href="#apply" class="form-button" style="margin-top: 30px;">Start Application</a>
-        </section>
+     <header class="header"> 
+         <div class="logo">Will Givens</div> 
+         <nav class="nav"> 
+                         <a href="#coaching-application">Apply Now</a> 
+             <a href="#about">About</a> 
+             <a href="#coaching-services">Coaching Services</a> 
+         </nav> 
+     </header> 
 
-        <div class="section-separator"></div>
-        
-        <!-- About Section (Placeholder Content) -->
-        <section id="about" class="section">
-            <h2>About Will Givens</h2>
-            <p style="max-width: 800px; margin: 0 auto; color: #bdbdbd;">Will Givens is a professional poker player with a proven track record of success at the highest level, including a prestigious WSOP Bracelet victory and millions in tournament earnings. Known for his methodical approach and ability to adapt to modern GTO concepts, Will is dedicated to translating his expertise into actionable improvements for his students.</p>
-        </section>
+     <main> 
+         <div class="hero-banner"> 
+             <h1>I want to help you win a bracelet! 🏆</h1> 
+         </div> 
 
-        <div class="section-separator"></div>
+         <section class="content-section"> 
+             <div class="text-content"> 
+                 <h1>Will Givens: Your Path to Poker Greatness</h1> 
+                 <p>Cashed for over $3.3 million. A WSOP bracelet winner and your coach for mastering live and online poker tournaments.</p> 
+                 <a href="#coaching-application" class="cta-button">Apply for Coaching</a>             </div> 
+             <div class="image-container"> 
+                 <img src="will-givens-wsop-winner.jpg" alt="Will Givens winning a WSOP bracelet"> 
+             </div> 
+         </section> 
 
-        <!-- Services Section (Placeholder Content) -->
-        <section id="services" class="section">
-            <h2>Our Coaching Services</h2>
-            <p style="max-width: 800px; margin: 0 auto 40px; color: #bdbdbd;">We offer highly focused 1-on-1 sessions, group strategy seminars, and customized database analysis packages.</p>
-            <!-- Add more detail here if needed -->
-        </section>
+         <div class="section-separator"></div> 
 
-        <div class="section-separator"></div>
+         <section id="about" class="section"> 
+             <h2>About Will Givens</h2> 
+             <p>Will Givens is a decorated poker professional with a career spanning over a decade, amassing over $3.3 million in live tournament earnings. His journey is marked by an unwavering dedication to the game and a consistent ability to perform at the highest level. From the high-stakes tables in Las Vegas to major tours across the United States, Will has demonstrated the skill, discipline, and strategic mindset required to dominate the felt, making him an ideal coach for players looking to elevate their game.</p> 
+         </section> 
+          
+         <div class="section-separator"></div> 
 
-        <!-- Application Form Section -->
-        <section id="apply" class="section">
-            <h2>Apply for Exclusive Coaching</h2>
-            <p style="color: #bdbdbd;">Tell us about your game, your goals, and your experience so we can tailor the perfect coaching plan to help you win your first bracelet.</p>
-            
-            <div class="coaching-form-container">
-                <!-- 
-                    *** GOOGLE FORM INTEGRATION - ALL ENTRY IDs CONFIRMED ***
-                    Action URL: https://docs.google.com/forms/u/0/d/e/1FAIpQLSddw-2S3gEnzD_73ZqbEJCUaZMokUy2qvvrGoFWEzjj6yjPnw/formResponse
-                -->
-                <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSddw-2S3gEnzD_73ZqbEJCUaZMokUy2qvvrGoFWEzjj6yjPnw/formResponse" method="POST" target="_blank">
+         <section class="section"> 
+             <h2>Career Highlights</h2> 
+             <p> 
+                 Will's impressive track record includes a multitude of deep runs, final table appearances, and outright victories against some of the world's best players. 
+             </p> 
+             <br> 
+             <p style="text-align: left; max-width: 800px; margin: auto;"> 
+                 <p> 
+                     His best live cash is $306,000, a significant achievement that showcases his ability to perform under pressure in a major tournament. 
+                 </p> 
+                 <br> 
+                 <p> 
+                     A 6th place finish at the WPT Venetian Main Event, a high-profile final table performance that secured a cash of $87,760. He also took 4th place at the WPT Maryland Main Event, cashing for $121,112. 
+                 </p> 
+                 <br> 
+                 <p> 
+                     He has racked up numerous other 1st place finishes in major circuits, including several WSOP Circuit events, the Wynn Millions Poker Series, and the WPT Borgata Winter Poker Open. 
+                 </p> 
+             </p> 
+         </section> 
 
-                    <h3>Contact Information</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="first_name">First Name (Required)</label>
-                            <input type="text" id="first_name" name="entry.1144330237" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="last_name">Last Name (Required)</label>
-                            <input type="text" id="last_name" name="entry.1201305835" required>
-                        </div>
-                    </div>
+         <div class="section-separator"></div> 
+         <section id="coaching-services" class="services-section"> 
+             <h2>Our Coaching Services</h2> 
+             <p>Will's coaching is less about rigid rules and more about developing a deep, intuitive feel for the game. We focus on teaching you how to think like an elite pro, not just memorize charts. Our curriculum and services are designed to build a complete player.</p> 
+              
+             <h3>Core Content and Curriculum</h3> 
+             <ul class="services-list"> 
+                 <li> 
+                     <strong>Advanced Hand Reading and Opponent Analysis</strong> 
+                     <p>Learn how to deduce opponent's holdings and thought processes by analyzing physical and online tells, betting patterns, and constructing accurate hand ranges.</p> 
+                 </li> 
+                 <li> 
+                     <strong>The "Mental Game" and "Table Presence"</strong> 
+                     <p>Master emotional control, avoid tilt, and use your table image to manipulate opponents. This unique focus is a cornerstone of becoming a truly great player.</p> 
+                 </li> 
+                 <li> 
+                     <strong>Deep Stack and High-Stakes Strategy</strong> 
+                     <p>Delve into the complex, multi-street strategies required in high-stakes cash games, including creative bet-sizing, thin value betting, and advanced bluffing.</p> 
+                 </li> 
+                 <li> 
+                     <strong>Exploitative Play and Deviating from GTO</strong> 
+                     <p>Go beyond Game Theory Optimal (GTO) play. Learn how to identify and exploit weaknesses in your opponents to maximize your edge against them.</p> 
+                 </li> 
+                 <li> 
+                     <strong>Hand Histories and Real-Life Examples</strong> 
+                     <p>Gain direct insight into Will's thought process by breaking down iconic and lesser-known hands he has played in crucial moments.</p> 
+                 </li> 
+             </ul> 
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email (Required)</label>
-                            <input type="email" id="email" name="entry.828854700" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="entry.228711533">
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="state">State / Province</label>
-                            <input type="text" id="state" name="entry.365805916">
-                        </div>
-                        <div class="form-group">
-                            <label for="country">Country</label>
-                            <input type="text" id="country" name="entry.128074312">
-                        </div>
-                    </div>
+             <h3>Services and Membership Tiers</h3> 
+             <ul class="tiers-list"> 
+                 <li> 
+                     <strong>Video Courses and Lessons</strong> 
+                     <p>Access a library of pre-recorded videos on specific topics, with frequent updates and a wide range of content.</p> 
+                 </li> 
+                 <li> 
+                     <strong>Hand History Reviews</strong> 
+                     <p>Submit your own hands for detailed video or written critiques from Will's team of hand-picked coaches.</p> 
+                 </li> 
+                 <li> 
+                     <strong>Community Forums and Discussion Boards</strong> 
+                     <p>Join a private community to discuss hands, share strategies, and interact with coaches and other students.</p> 
+                 </li> 
+                 <li> 
+                     <strong>Personalized 1-on-1 Coaching</strong> 
+                     <p>The most exclusive tier for serious players, offering private sessions with Will Givens himself.</p> 
+                 </li> 
+                 <li> 
+                     <strong>Drills and Quizzes</strong> 
+                     <p>Practice and internalize concepts with interactive tools like a hand reading trainer, quizzes on specific situations, and pre-flop range quizzes.</p> 
+                 </li> 
+             </ul> 
+         </section> 
+          
+         <div class="section-separator"></div> 
+          
+                 <section id="coaching-application" class="email-contact-section"> 
+             <h2>Apply for 1-on-1 Coaching</h2> 
+             <p style="color: #b0b0b0; font-size: 16px; margin-top: 10px; margin-bottom: 20px;">
+                Fill out the application form below. The information will help us determine the best coaching plan to help you achieve your goals.
+             </p>
 
-                    <div class="section-separator" style="margin: 20px auto;"></div>
-
-                    <h3>Poker Game & Finance Details</h3>
-
-                    <div class="form-group">
-                        <label for="bankroll">Current Poker Bankroll (USD)</label>
-                        <select id="bankroll" name="entry.1634571265">
-                            <option value="">Select an approximate range</option>
-                            <!-- Values must exactly match Google Form options -->
-                            <option value="Under $1,000 (Micro Stakes)">Under $1,000 (Micro Stakes)</option>
-                            <option value="$1,000 - $5,000">$1,000 - $5,000 (Low Stakes)</option>
-                            <option value="$5,001 - $20,000">$5,001 - $20,000 (Mid Stakes)</option>
-                            <option value="Over $20,000">Over $20,000 (High Stakes)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="format">Primary Format</label>
-                            <select id="format" name="entry.843853463">
-                                <option value="">Select a format</option>
-                                <!-- Values must exactly match Google Form options -->
-                                <option value="Tournaments (MTTs)">Tournaments (MTTs)</option>
-                                <option value="Cash Games">Cash Games</option>
-                                <option value="Mixed/Other">Mixed/Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="stakes">Average Stakes/Buy-in Level</label>
-                            <input type="text" id="stakes" name="entry.870153605" placeholder="e.g., $1/$2 Cash or $50 Buy-in MTTs">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="goals">Goals for Coaching (What do you want to achieve?)</label>
-                        <textarea id="goals" name="entry.1932284768" placeholder="e.g., Win my first WSOP circuit ring, consistently beat 50NL, or qualify for a major tournament."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="history">Tell Me About How You Got Into Poker (Required)</label>
-                        <textarea id="history" name="entry.784812248" required placeholder="e.g., I started playing home games with friends, then moved online. I've been studying for 2 years."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="help">What Can I Do To Help You The Best?</label>
-                        <textarea id="help" name="entry.790460400" placeholder="e.g., I need help with GTO solver work, deep MTT strategy, or psychological game control."></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="source">How Did You Hear About Will Givens?</label>
-                        <select id="source" name="entry.1750645726">
-                            <option value="">Select an option</option>
-                            <!-- Values must exactly match Google Form options -->
-                            <option value="Referral/Friend">Referral/Friend</option>
-                            <option value="Social Media (Twitter/FB/IG)">Social Media (Twitter/FB/IG)</option>
-                            <option value="Google Search">Google Search</option>
-                            <option value="Poker News/Article">Poker News/Article</option>
-                            <option value="WSOP/Hendon Mob">WSOP/Hendon Mob</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-
-                    <div style="text-align: center; margin-top: 30px;">
-                        <button type="submit" class="form-button">Submit Application</button>
-                    </div>
-                </form>
+            <div class="form-container">
+                <iframe 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSddw-2S3gEnzD_73ZqbEJCUaZMokUy2qvvrGoFWEzjj6yjPnw/viewform?embedded=true" 
+                    width="100%" 
+                    height="1200" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0"
+                >
+                    Loading Coaching Application...
+                </iframe>
             </div>
-        </section>
-        
-        <div class="section-separator"></div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSddw-2S3gEnzD_73ZqbEJCUaZMokUy2qvvrGoFWEzjj6yjPnw/viewform" target="_blank" class="cta-button" style="margin-top: 20px;">Open Form in New Tab</a>
+         </section> 
+             </main> 
 
-        <section id="email-contact" class="section">
-            <h2>Alternative Contact</h2>
-            <p style="color: #bdbdbd;">If you prefer not to use the application form, you can email us directly at:</p>
-            <p style="color: #e74c3c; font-size: 28px; margin-top: 10px; font-family: 'Poppins', sans-serif;">welcome@willgivens.com</p>
-            <a href="mailto:welcome@willgivens.com" class="form-button" style="background-color: #2c3e50;">Email Now</a>
-        </section>
-        
-    </main>
-
-</body>
-</html>
+ </body> 
+ </html>
