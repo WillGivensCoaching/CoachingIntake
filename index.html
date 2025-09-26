@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* General Body and Font Styles */
         body {
@@ -102,7 +103,7 @@
         }
         
         /* Call-to-Action (CTA) Button */
-        .cta-button {
+        .cta-button, .form-button {
             display: inline-block;
             padding: 15px 40px;
             background-color: #e74c3c;
@@ -113,8 +114,10 @@
             transition: background-color 0.3s ease-in-out, transform 0.2s;
             text-transform: uppercase;
             letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
         }
-        .cta-button:hover {
+        .cta-button:hover, .form-button:hover {
             background-color: #c0392b;
             transform: translateY(-3px);
         }
@@ -144,17 +147,63 @@
             margin: auto;
         }
         
-        /* New Email Contact Section Styling */
-        .email-contact-section {
-            padding: 50px;
-            text-align: center;
+        /* Form Section Styling (New/Updated) */
+        #apply {
+            background-color: #242424; /* Slightly lighter dark background for the form area */
         }
-        .email-contact-section p {
-            font-size: 24px;
-            font-weight: 600;
-            color: #e74c3c;
-            margin-top: 20px;
+        .coaching-form-container {
+            max-width: 800px;
+            margin: 30px auto 0;
+            padding: 40px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            text-align: left;
         }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #e74c3c; /* Label color changed to red for visibility */
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333333;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #333333;
+            color: #ffffff;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #e74c3c;
+            outline: none;
+        }
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+
 
         /* Coaching Services Section Styling */
         .services-section {
@@ -206,12 +255,7 @@
             color: #b0b0b0;
             line-height: 1.5;
         }
-
-        .email-cta {
-            padding-top: 50px;
-            text-align: center;
-        }
-
+        
         /* Media Query for Mobile Responsiveness */
         @media (max-width: 768px) {
             .header {
@@ -250,6 +294,10 @@
             .services-list, .tiers-list {
                 grid-template-columns: 1fr;
             }
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
         }
     </style>
 </head>
@@ -258,7 +306,7 @@
     <header class="header">
         <div class="logo">Will Givens</div>
         <nav class="nav">
-            <a href="#email-contact">Contact</a>
+            <a href="#apply">Apply</a>
             <a href="#about">About</a>
             <a href="#coaching-services">Coaching Services</a>
         </nav>
@@ -273,7 +321,7 @@
             <div class="text-content">
                 <h1>Will Givens: Your Path to Poker Greatness</h1>
                 <p>Cashed for over $3.3 million. A WSOP bracelet winner and your coach for mastering live and online poker tournaments.</p>
-                <a href="#coaching-services" class="cta-button">Get Coached Now</a>
+                <a href="#apply" class="cta-button">Apply for Coaching</a>
             </div>
             <div class="image-container">
                 <img src="will-givens-wsop-winner.jpg" alt="Will Givens winning a WSOP bracelet">
@@ -295,7 +343,7 @@
                 Will's impressive track record includes a multitude of deep runs, final table appearances, and outright victories against some of the world's best players.
             </p>
             <br>
-            <p style="text-align: left; max-width: 800px; margin: auto;">
+            <div style="text-align: left; max-width: 800px; margin: auto; color: #b0b0b0;">
                 <p>
                     His best live cash is $306,000, a significant achievement that showcases his ability to perform under pressure in a major tournament.
                 </p>
@@ -307,7 +355,7 @@
                 <p>
                     He has racked up numerous other 1st place finishes in major circuits, including several WSOP Circuit events, the Wynn Millions Poker Series, and the WPT Borgata Winter Poker Open.
                 </p>
-            </p>
+            </div>
         </section>
 
         <div class="section-separator"></div>
@@ -366,8 +414,119 @@
         
         <div class="section-separator"></div>
         
-        <section id="email-contact" class="email-contact-section">
-            <h2>Contact Us</h2>
+        <section id="apply" class="section">
+            <h2>Apply for Exclusive Coaching</h2>
+            <p>Tell us about your game, your goals, and your experience so we can tailor the perfect coaching plan to help you win your first bracelet.</p>
+            
+            <div class="coaching-form-container">
+                <form action="YOUR_GOOGLE_FORM_EMBED_URL" method="POST" target="_blank">
+
+                    <h3>Contact Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first_name">First Name (Required)</label>
+                            <input type="text" id="first_name" name="entry.1000000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name (Required)</label>
+                            <input type="text" id="last_name" name="entry.1000001" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email (Required)</label>
+                            <input type="email" id="email" name="entry.1000002" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="entry.1000003">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="state">State / Province</label>
+                            <input type="text" id="state" name="entry.1000004">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" name="entry.1000005">
+                        </div>
+                    </div>
+
+                    <div class="section-separator" style="margin: 20px auto;"></div>
+
+                    <h3>Poker Game & Finance Details</h3>
+
+                    <div class="form-group">
+                        <label for="bankroll">Current Poker Bankroll (USD)</label>
+                        <select id="bankroll" name="entry.1000006">
+                            <option value="">Select an approximate range</option>
+                            <option value="Under $1,000">Under $1,000 (Micro Stakes)</option>
+                            <option value="$1,000 - $5,000">$1,000 - $5,000 (Low Stakes)</option>
+                            <option value="$5,001 - $20,000">$5,001 - $20,000 (Mid Stakes)</option>
+                            <option value="Over $20,000">Over $20,000 (High Stakes)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="format">Primary Format</label>
+                            <select id="format" name="entry.1000007">
+                                <option value="">Select a format</option>
+                                <option value="Tournaments (MTTs)">Tournaments (MTTs)</option>
+                                <option value="Cash Games">Cash Games</option>
+                                <option value="Mixed/Other">Mixed/Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="stakes">Average Stakes/Buy-in Level</label>
+                            <input type="text" id="stakes" name="entry.1000008" placeholder="e.g., $1/$2 Cash or $50 Buy-in MTTs">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goals">Goals for Coaching (What do you want to achieve?)</label>
+                        <textarea id="goals" name="entry.1000009"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="history">Tell Me About How You Got Into Poker</label>
+                        <textarea id="history" name="entry.1000010"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="help">What Can I Do To Help You The Best?</label>
+                        <textarea id="help" name="entry.1000011"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="source">How Did You Hear About Will Givens?</label>
+                        <select id="source" name="entry.1000012">
+                            <option value="">Select an option</option>
+                            <option value="Referral/Friend">Referral/Friend</option>
+                            <option value="Social Media (Twitter/FB/IG)">Social Media (Twitter/FB/IG)</option>
+                            <option value="Google Search">Google Search</option>
+                            <option value="Poker News/Article">Poker News/Article</option>
+                            <option value="WSOP/Hendon Mob">WSOP/Hendon Mob</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button type="submit" class="form-button">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        
+        <div class="section-separator"></div>
+
+        </main>
+
+</body>
+</html>
             <p>For more information or to inquire about coaching, please email us directly at:</p>
             <p style="color: #e74c3c; font-size: 28px; margin-top: 10px;">welcome@willgivens.com</p>
             <a href="mailto:welcome@willgivens.com" class="cta-button">Email Now</a>
