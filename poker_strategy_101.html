@@ -1,1 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course 102: Advanced Post-Flop Play (Expanded)</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font and colors for the dark, high-contrast theme */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; /* Deep Black background */
+            color: #f5f5f5; /* Off-white text */
+            line-height: 1.7;
+        }
+        .text-accent {
+            color: #4c8de5; /* Primary blue accent for this course */
+        }
+        .bg-card {
+            background-color: #1a1a1a; /* Dark card background */
+            border: 1px solid #333333;
+        }
+        .module-header {
+            border-bottom: 3px solid #4c8de5;
+            padding-bottom: 0.75rem;
+        }
+        .formula {
+            background-color: #0d0d0d;
+            border-left: 4px solid #4c8de5;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            font-family: monospace;
+            font-size: 1.1rem;
+            overflow-x: auto;
+            border-radius: 6px;
+        }
+        .course-table th {
+            background-color: #4c8de5;
+            color: black;
+            font-weight: 700;
+            padding: 0.75rem;
+            text-transform: uppercase;
+        }
+        .course-table td {
+            background-color: #2a2a2a;
+            border-color: #333333;
+            padding: 0.75rem;
+        }
+        /* Custom class for bolding required by user request */
+        .content-bold {
+            font-weight: 700;
+            color: #4c8de5; /* Use accent color for emphasis */
+        }
+        /* Styling for new Tip/Fact/Definition Boxes */
+        .tip-box {
+            background-color: #242424;
+            border-left: 4px solid #fcd34d; /* Yellow border for Tips */
+        }
+        .definition-box {
+            background-color: #242424;
+            border-left: 4px solid #34d399; /* Green border for Definitions */
+        }
+        .fun-fact-box {
+            background-color: #242424;
+            border-left: 4px solid #ef4444; /* Red border for Fun Facts */
+        }
+    </style>
+</head>
+<body class="min-h-screen">
 
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 bg-card shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-black text-white">102: Advanced Post-Flop Play</h1>
+            <span class="text-sm font-medium uppercase tracking-widest text-accent">GTO EXECUTION & EXPLOITATION</span>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20">
+
+        <!-- Course Title & Introduction -->
+        <section class="mb-16">
+            <h2 class="text-5xl md:text-6xl font-black text-white leading-tight">
+                Poker Coaching: <span class="text-accent">Advanced Post-Flop Strategy</span>
+            </h2>
+            <p class="mt-4 text-xl text-gray-400">
+                This course is dedicated to mastering the streets after the pre-flop action. We transition from simple hand strength evaluation to rigorous <strong class="content-bold">range construction</strong>, <strong class="content-bold">equitable distribution</strong>, and <strong class="content-bold">GTO-approved betting lines</strong> across the flop, turn, and river. True profitability lies in superior post-flop execution.
+            </p>
+            
+            <div class="definition-box p-4 rounded-lg shadow-lg mt-6">
+                <h5 class="text-lg font-bold text-green-300 mb-2">📚 Definition: GTO (Game Theory Optimal)</h5>
+                <p class="text-gray-300">
+                    <strong class="content-bold">GTO</strong> is a strategy that cannot be exploited by a perfectly rational opponent. It represents a theoretical equilibrium in poker. We study GTO to understand the baseline, but we <strong class="content-bold">exploit</strong> actual human errors.
+                </p>
+            </div>
+            <hr class="mt-8 border-gray-700">
+        </section>
+
+        <!-- --- Module 1: The C-Betting Framework and Range Advantage --- -->
+        <section class="bg-card p-6 sm:p-10 rounded-xl shadow-2xl mb-16">
+            <h3 class="text-3xl font-extrabold text-white module-header mb-8">
+                Module 1: The C-Betting Framework and Range Advantage <span class="text-accent">📐</span>
+            </h3>
+
+            <p class="text-gray-300 mb-6">
+                The <strong class="content-bold">Continuation Bet (C-Bet)</strong> is the cornerstone of post-flop strategy. A C-Bet is profitable not because you have a strong hand, but because your pre-flop raising range has a <strong class="content-bold">range advantage</strong> over your opponent's calling range on specific board textures.
+            </p>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">1.1 Understanding Range Advantage (RA)</h4>
+            <p class="text-gray-400 mb-4">
+                <strong class="content-bold">Range Advantage</strong> is determined by which player's range contains more hands that hit the board well (e.g., sets, two-pair, strong top-pair).
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2 mb-6">
+                <li><strong class="content-bold">High Cards Boards (A-K-x, K-Q-x):</strong> The <strong class="content-bold">Pre-Flop Raiser (PFR)</strong> typically has a massive advantage here because they opened with all the strong Broadway cards, while the Big Blind defender's range is capped (it usually doesn't contain $A-A$ or $K-K$ if those were 3-bet). On these boards, you C-bet frequently with a <strong class="content-bold">small size</strong> (25%-33% pot).</li>
+                <li><strong class="content-bold">Low/Connected Boards (7-6-5, 8-5-2):</strong> The <strong class="content-bold">Big Blind Defender</strong> often has a slightly uncapped or very connected range here, containing many smaller pocket pairs and suited connectors that make two pair and straights. On these boards, the PFR should check more and C-bet less, using a <strong class="content-bold">medium size</strong> when betting.</li>
+            </ul>
+
+            <div class="definition-box p-4 rounded-lg shadow-lg mt-6">
+                <h5 class="text-lg font-bold text-green-300 mb-2">📚 Definition: Static vs. Dynamic Boards</h5>
+                <p class="text-gray-300">
+                    A <strong class="content-bold">Static Board</strong> (e.g., $A\heartsuit K\spades 2\club$) is one where the turn and river are unlikely to change the rank order of hands significantly. A <strong class="content-bold">Dynamic Board</strong> (e.g., $9\heartsuit 8\heartsuit 7\spades$) is one where subsequent cards can easily create straights, flushes, or greatly improve equity, leading to greater volatility.
+                </p>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4 mt-8">1.2 The Three Pillars of C-Betting</h4>
+            <p class="text-gray-400 mb-4">
+                Every hand you C-Bet must satisfy one of these three roles to be GTO-compliant:
+            </p>
+            <ol class="list-decimal list-inside text-gray-300 ml-4 space-y-2 mb-6">
+                <li><strong class="content-bold">Value Hands (V):</strong> Hands that are better than your opponent's continuing range (e.g., Top Pair, better). These bet to build the pot and extract money.</li>
+                <li><strong class="content-bold">Bluffs (B):</strong> Hands that have little current equity but excellent potential to improve (strong draws). These bet for <strong class="content-bold">fold equity</strong> and to balance your value bets.</li>
+                <li><strong class="content-bold">Protection/Thin Value (P):</strong> Medium-strength hands or draws that need protection from opponent equity (e.g., weak top pair, overcards with a backdoor draw). These bet with a small size to deny equity and extract thin value.</li>
+            </ol>
+
+            <div class="tip-box p-4 rounded-lg shadow-lg mt-6">
+                <h5 class="text-lg font-bold text-yellow-300 mb-2">💡 Advanced Tip: GTO Small Sizing</h5>
+                <p class="text-gray-300">
+                    Use the <strong class="content-bold">small 25%-33% sizing</strong> whenever you feel your range advantage is substantial and you want to bet a very high frequency (80-100%) of your hands. This low-risk bet defends your pre-flop equity and makes your opponent's life extremely difficult by forcing them to defend nearly their entire calling range.
+                </p>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4 mt-8">1.3 GTO Sizing and Frequency Correlation</h4>
+            <p class="text-gray-400 mb-4">
+                The size you choose dictates the required frequency and the shape of your range (merged vs. polarized):
+            </p>
+            <div class="overflow-x-auto my-6">
+                <table class="course-table min-w-full text-left rounded-lg overflow-hidden">
+                    <thead>
+                        <tr>
+                            <th class="p-3">Bet Size (Pot %)</th>
+                            <th class="p-3">Range Type</th>
+                            <th class="p-3">Boards Used On</th>
+                            <th class="p-3">Required MDF for Opponent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-3 font-semibold text-green-400">25-33% (Small)</td>
+                            <td class="p-3">Merged</td>
+                            <td class="p-3">High RA, Dry, Static boards (A-7-2)</td>
+                            <td class="p-3">75%-80%</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold text-yellow-400">50-67% (Medium)</td>
+                            <td class="p-3">Slightly Polarized</td>
+                            <td class="p-3">Neutral, Semi-Connected boards (J-9-4)</td>
+                            <td class="p-3">60%-67%</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold text-red-400">75%+ (Large)</td>
+                            <td class="p-3">Fully Polarized</td>
+                            <td class="p-3">Wet boards, situations where fold equity is paramount.</td>
+                            <td class="p-3">57% or less</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="fun-fact-box p-4 rounded-lg shadow-lg mt-6">
+                <h5 class="text-lg font-bold text-red-300 mb-2">🚀 Fun Fact: The C-Betting Boom</h5>
+                <p class="text-gray-300">
+                    During the early 2010s poker boom, the default strategy was to C-bet 100% of flops as the PFR. This was massively exploitable, leading to the development of the nuanced, frequency-dependent GTO strategy we use today.
+                </p>
+            </div>
+            
+            <h4 class="text-2xl font-semibold text-accent mb-4 mt-8">1.4 Delayed C-Betting (Turn Strategy)</h4>
+            <p class="text-gray-400">
+                A <strong class="content-bold">Delayed C-Bet</strong> involves checking the flop and then betting the turn. This is crucial when the flop favors the Big Blind's calling range, but the turn card is favorable to the PFR.
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2">
+                <li><strong class="content-bold">Rationale:</strong> By checking the flop, you realize your equity for free and allow the BB to realize theirs. When a favorable card (like an overcard) hits the turn, your betting range is now much stronger than the BB's checking range, and you can apply pressure with a <strong class="content-bold">high frequency</strong> (80%+) bet.</li>
+                <li><strong class="content-bold">Ideal Hands:</strong> Hands that have improved (hit a pair) or hands that had great backdoor equity that is now a strong draw or a thin value hand.</li>
+            </ul>
+        </section>
+
+        <!-- --- Module 2: Minimum Defense Frequency, Combinatorics, and Exploitation --- -->
+        <section class="bg-card p-6 sm:p-10 rounded-xl shadow-2xl mb-16">
+            <h3 class="text-3xl font-extrabold text-white module-header mb-8">
+                Module 2: Minimum Defense Frequency, Combinatorics, and Exploitation <span class="text-accent">🔍</span>
+            </h3>
+
+            <p class="text-gray-300 mb-6">
+                Mastering the GTO approach means understanding how often you need to bluff, how often your opponent needs to call, and how to count the exact number of hand combinations to ensure balance.
+            </p>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">2.1 The Minimum Defense Frequency (MDF)</h4>
+            <p class="text-gray-400 mb-4">
+                <strong class="content-bold">MDF</strong> is the minimum percentage of your hands you must continue with (call, raise, or reraise) to prevent an opponent from profitably bluffing with any two cards.
+            </p>
+            
+            <div class="definition-box p-4 rounded-lg shadow-lg mt-6">
+                <h5 class="text-lg font-bold text-green-300 mb-2">📚 Definition: Effective Stack Size (ESS)</h5>
+                <p class="text-gray-300">
+                    <strong class="content-bold">ESS</strong> refers to the smaller of the two players' stack sizes involved in a hand. All post-flop decisions, especially bet sizing and barreling plans, must be calculated relative to the ESS to manage the risk-to-reward ratio and ensure all-in bets land correctly on the river.
+                </p>
+            </div>
+
+            <div class="formula">
+                <p class="text-white font-bold">MDF Formula:</p>
+                $$\text{MDF} = \frac{\text{Pot Size}}{\text{Pot Size} + \text{Bet Size}}$$
+                <p class="text-sm mt-2 text-gray-400">Example: If your opponent bets 50% pot (Pot: 100, Bet: 50, New Pot: 150), $\text{MDF} = \frac{100}{100 + 50} = 66.7\%$. You must defend 66.7% of your hands.</p>
+            </div>
+            <p class="text-gray-300 mb-6">
+                This formula is critical for bluffing. If you bet and your opponent is defending <strong class="content-bold">less than the MDF</strong>, you are bluffing too little, and they are folding too much. You should <strong class="content-bold">increase your bluff frequency</strong>.
+            </p>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4 mt-8">2.2 Combinatorics: Balancing Ranges</h4>
+            <p class="text-gray-400 mb-4">
+                To build a perfectly balanced range, you must count combinations (combos). The <strong class="content-bold">Value-to-Bluff Ratio</strong> is derived from MDF.
+            </p>
+            <div class="formula">
+                <p class="text-white font-bold">Value-to-Bluff Ratio ($V:B$ Ratio):</p>
+                $$\text{V} : \text{B} = \frac{\text{Pot Size} + \text{Bet Size}}{\text{Bet Size}} - 1$$
+                <p class="text-sm mt-2 text-gray-400">Example: If you bet 100% pot ($\text{V}:\text{B} = \frac{1+1}{1}-1 = 1:1$). For every 1 value combo, you need 1 bluff combo.</p>
+            </div>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2 mb-6">
+                <li><strong class="content-bold">Practical Application:</strong> On the river, after determining your $V:B$ ratio, you count how many combos of hands you have that beat your opponent's calling range (Value) and select the corresponding number of hands with no showdown value but good blockers (Bluff).</li>
+                <li><strong class="content-bold">Hand Selection for Bluffs:</strong> Always prioritize hands that hold <strong class="content-bold">blockers</strong> to your opponent's strong calling hands (e.g., bluffing with the Ace of a missed flush draw blocks their ability to have stronger flushes or Ace-high combinations).</li>
+            </ul>
+
+            <div class="fun-fact-box p-4 rounded-lg shadow-lg mt-6">
+                <h5 class="text-lg font-bold text-red-300 mb-2">🚀 Fun Fact: Combinatorics in Solvers</h5>
+                <p class="text-gray-300">
+                    The concept of combinatorics is so crucial that modern GTO poker solvers primarily function by analyzing the frequency distribution of <strong class="content-bold">combinations</strong> across different betting lines, rather than just hand rankings.
+                </p>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4 mt-8">2.3 Exploitative Adjustments: Leaks and Counter-Strategies</h4>
+            <p class="text-gray-400 mb-4">
+                While GTO is the baseline, the highest win rates come from exploiting opponents who deviate from it.
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2">
+                <li><strong class="content-bold">Opponent A: The Calling Station (Under-folds MDF)</strong>
+                    <p class="text-sm text-gray-500 ml-4">Counter-Strategy: Virtually <strong class="content-bold">eliminate bluffs</strong> and bet thinner for value. If they call with worse than a middle pair, bet all your marginal hands that beat that middle pair. They pay you off.</p>
+                </li>
+                <li><strong class="content-bold">Opponent B: The Folder (Over-folds MDF)</strong>
+                    <p class="text-sm text-gray-500 ml-4">Counter-Strategy: <strong class="content-bold">C-bet and barrel far more often</strong> with pure bluffs, especially using small sizings. Bet hands with zero equity, as the fold equity alone makes the bet profitable. Ignore the $V:B$ ratio.</p>
+                </li>
+                <li><strong class="content-bold">Opponent C: The Check-Raiser (Overly Aggressive)</strong>
+                    <p class="text-sm text-gray-500 ml-4">Counter-Strategy: On the flop, check back more <strong class="content-bold">medium-strength hands</strong> (Top Pair/Weak Kicker, Middle Pair) to smooth-call their turn/river aggression. Bet your <strong class="content-bold">strongest hands</strong> and your <strong class="content-bold">pure trash</strong> to isolate their bluffing range.</p>
+                </li>
+            </ul>
+            
+            <div class="tip-box p-4 rounded-lg shadow-lg mt-6">
+                <h5 class="text-lg font-bold text-yellow-300 mb-2">💡 Advanced Tip: Exploiting Low MDF</h5>
+                <p class="text-gray-300">
+                    When you notice an opponent folding 80% to your 50% pot C-bets (when MDF is 66.7%), you are leaving money on the table. To maximize exploitation, <strong class="content-bold">bet 100% of your range</strong> on that board texture, ignoring balance entirely, until they adjust.
+                </p>
+            </div>
+        </section>
+
+        <!-- --- Module 3: Non-Showdown Profit and Advanced Moves --- -->
+        <section class="bg-card p-6 sm:p-10 rounded-xl shadow-2xl">
+            <h3 class="text-3xl font-extrabold text-white module-header mb-8">
+                Module 3: Non-Showdown Profit and Advanced Moves <span class="text-accent">🛠️</span>
+            </h3>
+
+            <p class="text-gray-300 mb-6">
+                This final module explores lines that require sophisticated range understanding, generating maximum fold equity and capitalizing on opponent mistakes.
+            </p>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">3.1 Check-Raising: GTO Range Construction</h4>
+            <p class="text-gray-400 mb-4">
+                A proper <strong class="content-bold">Check-Raising</strong> range must be balanced to prevent the PFR from exploiting your check-back range. This is primarily an Out-of-Position (OOP) strategy.
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2 mb-6">
+                <li><strong class="content-bold">Flop Check-Raise Composition:</strong>
+                    <ul>
+                        <li><strong class="content-bold">Value:</strong> All the nuts (sets, two pair, and sometimes the strongest Top Pair).</li>
+                        <li><strong class="content-bold">Bluffs:</strong> Primarily <strong class="content-bold">high-equity draws</strong> (Open-Ended Straight Draws, Flush Draws, and combo draws). You raise draws to create a larger pot for when you hit, or win the pot immediately.</li>
+                        <li><strong class="content-bold">Avoid:</strong> Check-raising with weak or medium-strength hands that have no significant draw; these should be check-called.</li>
+                    </ul>
+                </li>
+                <li><strong class="content-bold">Turn Check-Raise:</strong> This line is highly polarized and only used when the turn card is <strong class="content-bold">highly favorable</strong> to your pre-flop calling range (e.g., the third heart or a straight completion). Your bluffs here are typically missed draws that still have a <strong class="content-bold">blocker</strong> to a better hand.</li>
+            </ul>
+
+            <div class="definition-box p-4 rounded-lg shadow-lg mt-6">
+                <h5 class="text-lg font-bold text-green-300 mb-2">📚 Definition: Blockers (Card Removal)</h5>
+                <p class="text-gray-300">
+                    A <strong class="content-bold">Blocker</strong> is a card in your hand that reduces the probability of your opponent holding a specific, usually strong, hand. For example, holding the $A\heartsuit$ when bluffing the river of a heart flush board reduces the number of full flushes your opponent can have, making them more likely to fold their inferior hands.
+                </p>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4 mt-8">3.2 The Defensive and Offensive Donk Bet</h4>
+            <p class="text-gray-400 mb-4">
+                A <strong class="content-bold">Donk Bet</strong> (leading into the pre-flop raiser) has evolved from a beginner mistake to a GTO-approved tool on specific board textures where the OOP player's range has a slight advantage.
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2 mb-6">
+                <li><strong class="content-bold">Ideal Donk Boards:</strong> Wet, low-to-medium connecting boards, especially two-tone boards (e.g., $7\heartsuit 6\heartsuit 4\spades$). The BB has a high frequency of suited connectors and low pocket pairs that connect with this board, while the PFR often misses.</li>
+                <li><strong class="content-bold">Donk Sizing:</strong> Almost always a <strong class="content-bold">small size</strong> (25%-33% pot). The small size keeps the range wide and prevents the PFR from cheaply raising or floating.</li>
+                <li><strong class="content-bold">Range Composition:</strong> Include value (sets, two pair), protection (weak top pair), and high-equity draws. Hands like $7-6$ or $5-5$ are perfect candidates.</li>
+            </ul>
+            
+            <div class="fun-fact-box p-4 rounded-lg shadow-lg mt-6">
+                <h5 class="text-lg font-bold text-red-300 mb-2">🚀 Fun Fact: The Origin of the "Donk"</h5>
+                <p class="text-gray-300">
+                    The term "Donk Bet" comes from older strategy where leading into the PFR was considered a leak characteristic of "donkeys" or poor players. Solvers have proven it is a small, necessary part of a balanced OOP strategy on specific boards, legitimizing the move!
+                </p>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4 mt-8">3.3 Advanced Multi-Street Play: Triple Barreling and Runouts</h4>
+            <p class="text-gray-400 mb-4">
+                <strong class="content-bold">Triple Barreling</strong> involves betting all three post-flop streets (Flop, Turn, River). This requires deep range foresight.
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2">
+                <li><strong class="content-bold">Bluff Barrel Selection:</strong> The hands you choose to bluff with must maintain their <strong class="content-bold">blocker value</strong> and <strong class="content-bold">equity</strong> as the board runs out. A hand that starts as an open-ended straight draw with an Ace blocker is an ideal candidate.</li>
+                <li><strong class="content-bold">Runout Analysis:</strong> Only fire the third barrel (river) when the card is a <strong class="content-bold">"scare card"</strong> or a <strong class="content-bold">"blank"</strong>.
+                    <ul>
+                        <li><strong class="content-bold">Scare Card:</strong> A card that completes a potential draw (like a flush) but which you are blocking. The opponent is now pressured to fold their marginal made hands.</li>
+                        <li><strong class="content-bold">Blank:</strong> A card that changes nothing (like a 2 on an A-K-Q-T board). You bet to fold out hands that beat you (like middle pair) but that your opponent might be tempted to call with.</li>
+                    </ul>
+                </li>
+                <li><strong class="content-bold">River Bet Sizing:</strong> River bets are often <strong class="content-bold">polarized and large</strong> (75% to 150% pot). This sizing optimizes your $V:B$ ratio for the highest expected value.</li>
+            </ul>
+
+            <div class="tip-box p-4 rounded-lg shadow-lg mt-6">
+                <h5 class="text-lg font-bold text-yellow-300 mb-2">💡 Advanced Tip: Triple Barrel Trigger</h5>
+                <p class="text-gray-300">
+                    The most powerful trigger for a triple barrel bluff is when the turn or river card is a <strong class="content-bold">card that improves your *perceived* range</strong> but not necessarily your *actual* hand. For instance, if you C-bet a high-card board and a middle card like a 9 hits the turn, barreling continues to represent hands like $A9$ or $K9$, making your opponent’s $QJ$ or bottom pair look worse.
+                </p>
+            </div>
+        </section>
+
+        <!-- Conclusion & Purchase Button -->
+        <section class="mt-16 text-center">
+            <h3 class="text-4xl font-black text-accent mb-4">Course 102 Complete!</h3>
+            <p class="text-xl text-gray-300 mb-8">
+                You’ve now moved beyond fundamentals into the theoretical deep end. Your next mission is <strong class="content-bold">Course 103: Exploitative & Live Play Strategy</strong>, where we put GTO aside and crush opponents based on their specific, observable mistakes!
+            </p>
+            <!-- Purchase Button for Course 103 -->
+            <a href="#course-103-purchase" class="inline-block px-10 py-4 text-xl font-bold rounded-xl shadow-2xl bg-gradient-to-r from-green-500 to-green-700 text-gray-900 transition duration-300 transform hover:scale-[1.03] hover:from-green-600 hover:to-green-800 focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 uppercase tracking-wider">
+                Enroll Now in Course 103 ($599)
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 bg-card py-6 border-t border-gray-700 text-center text-gray-500">
+        <p>MAXIMIZE YOUR EDGE | &copy; 2025 Poker Curriculum</p>
+    </footer>
+
+</body>
+</html>
