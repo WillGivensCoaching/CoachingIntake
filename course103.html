@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course 103: Exploitative & Live Play Mastery</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font and colors for the dark, high-contrast theme */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; /* Deep Black background */
+            color: #f5f5f5; /* Off-white text */
+            line-height: 1.7;
+        }
+        .text-accent {
+            color: #e54c8d; /* Primary magenta/pink accent for this course */
+        }
+        .bg-card {
+            background-color: #1a1a1a; /* Dark card background */
+            border: 1px solid #333333;
+        }
+        .module-header {
+            border-bottom: 3px solid #e54c8d;
+            padding-bottom: 0.75rem;
+        }
+        .formula {
+            background-color: #0d0d0d;
+            border-left: 4px solid #e54c8d;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            font-family: monospace;
+            font-size: 1.1rem;
+            overflow-x: auto;
+            border-radius: 6px;
+        }
+        .course-table th {
+            background-color: #e54c8d;
+            color: black;
+            font-weight: 700;
+            padding: 0.75rem;
+            text-transform: uppercase;
+        }
+        .course-table td {
+            background-color: #2a2a2a;
+            border-color: #333333;
+            padding: 0.75rem;
+        }
+        /* Custom class for bolding */
+        .content-bold {
+            font-weight: 700;
+            color: #e54c8d; /* Use accent color for emphasis */
+        }
+        /* Styling for Tip/Fact/Definition Boxes */
+        .tip-box {
+            background-color: #242424;
+            border-left: 4px solid #fcd34d; /* Yellow border for Tips */
+        }
+        .definition-box {
+            background-color: #242424;
+            border-left: 4px solid #34d399; /* Green border for Definitions */
+        }
+        .fun-fact-box {
+            background-color: #242424;
+            border-left: 4px solid #ef4444; /* Red border for Fun Facts */
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 bg-card shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-black text-white">103: Exploitative & Live Play</h1>
+            <span class="text-sm font-medium uppercase tracking-widest text-accent">LEAKS, TELLS, AND MAXIMIZING EV</span>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20">
+
+        <!-- Course Title & Introduction -->
+        <section class="mb-16">
+            <h2 class="text-5xl md:text-6xl font-black text-white leading-tight">
+                Poker Coaching: <span class="text-accent">Exploitative & Live Play Mastery</span>
+            </h2>
+            <p class="mt-4 text-xl text-gray-400">
+                GTO is about playing perfectly so you can't lose. <strong class="content-bold">Exploitative poker is about playing imperfectly to make the most money.</strong> This course teaches you to identify the most common human flaws—the "leaks"—and implement targeted, high-profit counter-strategies in both online and real-world live games.
+            </p>
+            
+            <div class="definition-box p-4 rounded-lg shadow-lg mt-6">
+                <h5 class="text-lg font-bold text-green-300 mb-2">📚 Definition: Exploitative Strategy</h5>
+                <p class="text-gray-300">
+                    A strategy that intentionally deviates from GTO to specifically punish a flaw (or "leak") in an opponent's strategy. By definition, an exploitative strategy is vulnerable to a balanced counter-attack, but it delivers <strong class="content-bold">maximum Expected Value (EV)</strong> against the opponent in question.
+                </p>
+            </div>
+            <hr class="mt-8 border-gray-700">
+        </section>
+
+        <!-- --- Module 1: Profiling and Quantifying Leaks --- -->
+        <section class="bg-card p-6 sm:p-10 rounded-xl shadow-2xl mb-16">
+            <h3 class="text-3xl font-extrabold text-white module-header mb-8">
+                Module 1: Profiling and Quantifying Opponent Leaks <span class="text-accent">📊</span>
+            </h3>
+
+            <p class="text-gray-300 mb-6">
+                Before you can exploit a player, you must accurately categorize them. This module teaches you to read statistics (online) and observe tendencies (live) to build a robust player profile.
+            </p>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">1.1 Core Statistics and Their Meaning</h4>
+            <p class="text-gray-400 mb-4">
+                These three stats form the foundation of most online (HUD) and live reads:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2 mb-6">
+                <li><strong class="content-bold">VPIP (Voluntarily Put in Pot):</strong> How often a player invests money pre-flop, beyond the Big Blind. (Normal GTO range: 20-30% for a full ring, 35-50% for 6-max).</li>
+                <li><strong class="content-bold">PFR (Pre-Flop Raise):</strong> How often a player raises pre-flop. (A large gap between VPIP and PFR suggests a "Limping Fish").</li>
+                <li><strong class="content-bold">3-Bet Frequency:</strong> How often a player re-raises. (Low suggests they only 3-bet the nuts; high suggests an aggressive player).</li>
+            </ul>
+
+            <div class="tip-box p-4 rounded-lg shadow-lg mt-6">
+                <h5 class="text-lg font-bold text-yellow-300 mb-2">💡 Live Read: VPIP and Stack Management</h5>
+                <p class="text-gray-300">
+                    In a live game, high VPIP players are easy to spot: they are constantly checking their cards, folding rarely, and often buying back in. Low VPIP players ("Nits") are often reading, looking at their phone, or waiting patiently for strong hands.
+                </p>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4 mt-8">1.2 Categorizing Common Player Profiles</h4>
+            <p class="text-gray-400 mb-4">
+                Assigning a nickname to a player helps you rapidly recall and implement the correct counter-strategy.
+            </p>
+            <div class="overflow-x-auto my-6">
+                <table class="course-table min-w-full text-left rounded-lg overflow-hidden">
+                    <thead>
+                        <tr>
+                            <th class="p-3">Profile</th>
+                            <th class="p-3">Key Leak</th>
+                            <th class="p-3">VPIP / PFR Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-3 font-semibold text-green-400">The Nit (Tight/Weak)</td>
+                            <td class="p-3">Over-folds post-flop, only 3-bets premium hands.</td>
+                            <td class="p-3">15 / 12</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold text-yellow-400">The Calling Station (Loose/Passive)</td>
+                            <td class="p-3">Calls too often, rarely raises, afraid to fold on river.</td>
+                            <td class="p-3">40 / 8</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold text-red-400">The Maniac (Loose/Aggressive)</td>
+                            <td class="p-3">Raises and bluffs too frequently, high 3-bet, high C-bet.</td>
+                            <td class="p-3">45 / 40</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4 mt-8">1.3 Isolation and Position Dynamics</h4>
+            <p class="text-gray-400">
+                The greatest profits come from isolating weak players in position.
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2">
+                <li><strong class="content-bold">Isolating Passive Players:</strong> When a weak player limps, or checks, raise larger than standard (e.g., 5-6x instead of 3x) to deny others the chance to enter, ensuring you play a large pot in position against a weak opponent.</li>
+                <li><strong class="content-bold">Punishing Nits Pre-Flop:</strong> If a Nit opens, you can 3-bet much wider than GTO dictates, as their fold-to-3-bet frequency is likely 70% or more.</li>
+            </ul>
+        </section>
+
+        <!-- --- Module 2: The Exploitative Counter-Toolbox --- -->
+        <section class="bg-card p-6 sm:p-10 rounded-xl shadow-2xl mb-16">
+            <h3 class="text-3xl font-extrabold text-white module-header mb-8">
+                Module 2: The Exploitative Counter-Toolbox <span class="text-accent">🔨</span>
+            </h3>
+
+            <p class="text-gray-300 mb-6">
+                Forget your GTO $V:B$ ratios. This is about making a specific player feel uncomfortable until they pay you off.
+            </p>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">2.1 Countering the Nit (The Over-Folder)</h4>
+            <p class="text-gray-400 mb-4">
+                The Nit's main leak is that they fold far too often to aggression. You combat this by increasing your aggression and decreasing your required equity.
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2 mb-6">
+                <li><strong class="content-bold">Triple Barrel Frequency:</strong> Increase your pure bluff triple-barrel frequency from 1:1 to 0.7:1 (V:B) because their river calling range is heavily condensed to the absolute nuts.</li>
+                <li><strong class="content-bold">Small Sizing Abuse:</strong> Use <strong class="content-bold">25% pot sizing</strong> on the flop and turn with 100% of your air. The small bet is low-risk, and their high fold frequency makes it instantly profitable.</li>
+                <li><strong class="content-bold">Check-Behind:</strong> If you check-behind the flop with a mid-strength hand (like middle pair), you avoid putting money in when they raise, and you get a free card.</li>
+            </ul>
+
+            <h4 class="2xl font-semibold text-accent mb-4 mt-8">2.2 Countering the Calling Station (The Under-Folder)</h4>
+            <p class="text-gray-400 mb-4">
+                The Calling Station's leak is their inability to fold marginal hands. You punish this by removing bluffs entirely and betting for value at every opportunity.
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2 mb-6">
+                <li><strong class="content-bold">Eliminate Bluffs:</strong> If they call with worse than Top Pair/Weak Kicker, you should simply check or give up on all your draws and air. You need a showdown-worthy hand to put money into the pot.</li>
+                <li><strong class="content-bold">Value Bet Thin:</strong> Bet hands that GTO would check, such as <strong class="content-bold">Third Pair</strong> on the river or marginal Top Pair. Their calling range is so wide that these hands become value bets.</li>
+                <li><strong class="content-bold">Overbet for Value:</strong> Use <strong class="content-bold">150% to 200% pot sizing</strong> when you have the nuts or near-nuts. The Calling Station's psychology makes them think a big bet means you're bluffing or trying to "buy" the pot, and they will call bigger than they should.</li>
+            </ul>
+
+            <div class="formula">
+                <p class="text-white font-bold">Exploitative Bluff-to-Value Shift (Against Calling Station):</p>
+                $$\text{Exploitation} \approx \text{GTO} - \text{Bluffs} + \text{Thin Value}$$
+                <p class="text-sm mt-2 text-gray-400">Your required value hands are now much weaker, and your river bluffs are eliminated, increasing your pot EV against this specific player.</p>
+            </div>
+            
+            <h4 class="text-2xl font-semibold text-accent mb-4 mt-8">2.3 Countering the Maniac (The Over-Aggressor)</h4>
+            <p class="text-gray-400 mb-4">
+                The Maniac applies too much pressure, which is uncomfortable but profitable if you adjust correctly.
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2">
+                <li><strong class="content-bold">Wider Call/4-Bet Pre-Flop:</strong> Open your calling and 4-betting ranges to defend against their wide 3-betting. Call with marginal hands like $A-T\text{ offsuit}$ or $K-J\text{ suited}$ to play post-flop in position.</li>
+                <li><strong class="content-bold">Trap/Slow-Play:</strong> Maniacs love to bet into you. Check-call or check-raise with <strong class="content-bold">very strong hands</strong> (Sets, Two Pair) to let them continue barreling into you with their air. Do not bet out on the flop or turn when you have the nuts.</li>
+                <li><strong class="content-bold">Bluff-Catching:</strong> Develop an excellent bluff-catching range on the river, calling down with strong pairs or even Ace-high when the board is connected, as their range contains significantly more bluffs than value hands.</li>
+            </ul>
+        </section>
+
+        <!-- --- Module 3: Live Play Dynamics and Tells --- -->
+        <section class="bg-card p-6 sm:p-10 rounded-xl shadow-2xl">
+            <h3 class="text-3xl font-extrabold text-white module-header mb-8">
+                Module 3: Live Play Dynamics and Tells <span class="text-accent">👁️</span>
+            </h3>
+
+            <p class="text-gray-300 mb-6">
+                Live poker introduces variables—physical tells, stack management, and a different pace—that online poker cannot replicate. This is where truly dominant players shine.
+            </p>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">3.1 Physical Tells: Reading Body Language</h4>
+            <p class="text-gray-400 mb-4">
+                The most reliable tells are usually based on a deviation from a player's baseline behavior. The Golden Rule of Tells: <strong class="content-bold">Weak Means Strength; Strong Means Weakness.</strong>
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2 mb-6">
+                <li><strong class="content-bold">The Trembling Hand (Strong):</strong> When a player is putting in a large bet and their hand trembles or is unnaturally steady, it often signifies an adrenaline rush due to a very strong hand (excitement, fear of getting called).</li>
+                <li><strong class="content-bold">The Eye Contact/Stare (Weak):</strong> A player who makes uncomfortable eye contact or stares you down after betting is often trying to assert confidence they don't have. Someone with the nuts will usually relax and look away.</li>
+                <li><strong class="content-bold">Immediate Reach (Weak):</strong> A player who instantly reaches for chips after the action gets to them, before thinking, is often trying to intimidate with a bluff.</li>
+            </ul>
+
+            <div class="fun-fact-box p-4 rounded-lg shadow-lg mt-6">
+                <h5 class="text-lg font-bold text-red-300 mb-2">🚀 Fun Fact: Rake and Pre-Flop Play</h5>
+                <p class="text-gray-300">
+                    Live casino games often have a high rake (the amount the house takes). This high cost of seeing a flop means you should play a <strong class="content-bold">tighter, more aggressive pre-flop game</strong> than GTO suggests, as marginal pots often become losers due to the overhead of the rake.
+                </p>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4 mt-8">3.2 Utilizing Stack Management and Sizing</h4>
+            <p class="text-gray-400 mb-4">
+                How a player organizes and bets their chips reveals intent:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2">
+                <li><strong class="content-bold">The Chip Splash:</strong> Throwing chips haphazardly into the pot (a "splashy" bet) is almost always a bluff or a thin value bet disguised as confidence. Genuine value bets are often counted and placed neatly.</li>
+                <li><strong class="content-bold">Tower Stacks:</strong> Players who build large, towering stacks are often trying to look aggressive or intimidate. Exploit them by calling light, as they want to avoid a showdown.</li>
+                <li><strong class="content-bold">The Chip Check:</strong> A player who stares intently at your stack *before* betting, especially on the river, is likely gauging how much they need to bet to get a fold. This often signifies a polarized range (nuts or pure bluff).</li>
+            </ul>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4 mt-8">3.3 Table Image and Psychological Warfare</h4>
+            <p class="text-gray-400">
+                Manage how you appear to the table. This is your most powerful meta-game tool.
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2">
+                <li><strong class="content-bold">The Tight Image:</strong> If you play tight for 30 minutes, your first large bluff will be highly effective because the table perceives you as a nit (i.e., you're abusing your image).</li>
+                <li><strong class="content-bold">The Maniac Image:</strong> If you show a few bluffs early, the table will start calling you down with marginal hands. This is the perfect time to switch and start <strong class="content-bold">value-betting thinner</strong> than ever before, as you've convinced them you always bluff.</li>
+            </ul>
+
+        </section>
+
+        <!-- Conclusion -->
+        <section class="mt-16 text-center">
+            <h3 class="text-4xl font-black text-accent mb-4">Course 103 Complete!</h3>
+            <p class="text-xl text-gray-300 mb-8">
+                Congratulations on mastering the art of exploiting human error! The final frontier is <strong class="content-bold">Course 201: Solver Analysis and AI Training</strong>, where you'll use advanced software to build and refine GTO strategies on a world-class level.
+            </p>
+            <!-- Purchase Button for Course 201 removed as requested -->
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 bg-card py-6 border-t border-gray-700 text-center text-gray-500">
+        <p>MAXIMIZE YOUR EDGE | &copy; 2025 Poker Curriculum</p>
+    </footer>
+
+</body>
+</html>
