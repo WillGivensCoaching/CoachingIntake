@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course 101: NLH Fundamentals (Expanded)</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font and colors for the dark, high-contrast theme */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; /* Deep Black background */
+            color: #f5f5f5; /* Off-white text */
+            line-height: 1.7;
+        }
+        .text-accent {
+            color: #e54c4c; /* Primary red accent */
+        }
+        .bg-card {
+            background-color: #1a1a1a; /* Dark card background */
+            border: 1px solid #333333;
+        }
+        .module-header {
+            border-bottom: 3px solid #e54c4c;
+            padding-bottom: 0.75rem;
+        }
+        /* Custom styling for the math formulas */
+        .formula {
+            background-color: #0d0d0d;
+            border-left: 4px solid #e54c4c;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            font-family: monospace;
+            font-size: 1.1rem;
+            overflow-x: auto;
+            border-radius: 6px;
+        }
+        /* Table styling for readability on dark background */
+        .course-table th {
+            background-color: #e54c4c;
+            color: black;
+            font-weight: 700;
+            padding: 0.75rem;
+            text-transform: uppercase;
+        }
+        .course-table td {
+            background-color: #2a2a2a;
+            border-color: #333333;
+            padding: 0.75rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 bg-card shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-black text-white">101: NLH Fundamentals</h1>
+            <span class="text-sm font-medium uppercase tracking-widest text-accent">3X EXPANDED COURSE</span>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20">
+
+        <!-- Course Title & Introduction -->
+        <section class="mb-16">
+            <h2 class="text-5xl md:text-6xl font-black text-white leading-tight">
+                Poker Coaching: <span class="text-accent">The Fundamentals (NLH)</span>
+            </h2>
+            <p class="mt-4 text-xl text-gray-400">
+                This comprehensive course transitions you from a hopeful player to a disciplined, profitable winner in small stakes No-Limit Hold'em by mastering math, GTO strategy, and the mental game.
+            </p>
+            <hr class="mt-8 border-gray-700">
+        </section>
+
+        <!-- --- Module 1: Advanced Foundational Poker Math --- -->
+        <section class="bg-card p-6 sm:p-10 rounded-xl shadow-2xl mb-16">
+            <h3 class="text-3xl font-extrabold text-white module-header mb-8">
+                Module 1: Advanced Foundational Poker Math <span class="text-accent">➗</span>
+            </h3>
+
+            <p class="text-gray-300 mb-6">
+                Profitability starts with understanding the numbers. We move beyond simple intuition to calculate profitability using equity, odds, and expected value.
+            </p>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">1.1 Hand Equity, Outs, and the 4 & 2 Rule</h4>
+            <p class="text-gray-400 mb-4">
+                **Equity** is your fair share of the pot. An **Out** is any card that will improve your hand to be the likely winner.
+            </p>
+
+            <div class="formula">
+                <p class="text-white font-bold">Standard Outs Calculation:</p>
+                <ul class="list-disc list-inside ml-4 text-sm text-gray-300 space-y-1">
+                    <li>Flush Draw (9 outs): $9 \times 4 \approx 36\%$ (Flop to River)</li>
+                    <li>Open-Ended Straight Draw (8 outs): $8 \times 4 \approx 32\%$ (Flop to River)</li>
+                    <li>Gutshot Straight Draw (4 outs): $4 \times 4 \approx 16\%$ (Flop to River)</li>
+                    <li>Combo Draw (Flush + OESD, 15 outs): $15 \times 4 \approx 60\%$ (Flop to River)</li>
+                </ul>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">1.2 Pot Odds and Required Equity (Clarified)</h4>
+            <p class="text-gray-400 mb-4">
+                **Pot Odds** are the ratio of what you must call to the total size of the pot you are trying to win (including your call). This determines the minimum frequency (required equity) you must win to break even on the call.
+            </p>
+
+            <div class="formula">
+                <p class="text-white font-bold">User-Friendly Required Equity Formula:</p>
+                $$\text{Required Equity} = \frac{\text{Amount to Call}}{\text{Total Pot Size after Call}}$$
+                <p class="text-xs mt-2 text-gray-400">Example: If you call $25 to win a total pot of $100, your required equity is $25 / $100 = 25\%$.</p>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">1.3 Implied Odds and Reverse Implied Odds</h4>
+            <p class="text-gray-400 mb-4">
+                The most sophisticated players factor in money that is *not yet* in the pot (**Implied Odds**) or money they might *lose* later (**Reverse Implied Odds**).
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2 mb-6">
+                <li>**Implied Odds:** When drawing, you have good implied odds if you believe your opponent will pay off a big bet when you hit your monster (e.g., hitting a flush with an opponent who never folds). This justifies calling even if pure pot odds are slightly negative.</li>
+                <li>**Reverse Implied Odds:** Occur when you make a thin call and hit a hand that is likely second-best (e.g., calling with $J7$ and hitting a $J$, only to lose a big pot to $AJ$ or $KJ$). These hands should be avoided because they cost more money when they hit than when they miss.</li>
+            </ul>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">1.4 Introduction to Expected Value (EV)</h4>
+            <p class="text-gray-400 mb-4">
+                **Expected Value (EV)** is the average profit or loss you expect to make from a decision if you repeat it an infinite number of times. Our entire goal is to maximize positive EV decisions.
+            </p>
+            <div class="formula">
+                <p class="text-white font-bold">EV Formula Overview:</p>
+                $$\text{EV} = (P(\text{Win}) \times \text{Profit}) - (P(\text{Loss}) \times \text{Loss})$$
+                <p class="text-xs mt-2 text-gray-400">If EV is greater than zero (positive), the decision is profitable long-term.</p>
+            </div>
+        </section>
+
+        <!-- --- Module 2: GTO-Based Pre-Flop Strategy & Post-Flop Theory --- -->
+        <section class="bg-card p-6 sm:p-10 rounded-xl shadow-2xl mb-16">
+            <h3 class="text-3xl font-extrabold text-white module-header mb-8">
+                Module 2: GTO Pre-Flop Strategy & Post-Flop Theory <span class="text-accent">📋</span>
+            </h3>
+
+            <p class="text-gray-300 mb-6">
+                We are building a **Tight, Aggressive (TAG)** strategy by using GTO-based ranges. This maximizes our information advantage and position.
+            </p>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">2.1 Positional Play: Rationale and RFI Ranges</h4>
+            <p class="text-gray-400 mb-4">
+                Never limp. The size of your Raise First In (RFI) should be consistent: **3x BB** in early/mid position, and **2.5x BB** in the Cut-Off (CO) or Button (BTN).
+            </p>
+
+            <div class="overflow-x-auto my-6">
+                <table class="course-table min-w-full text-left rounded-lg overflow-hidden">
+                    <thead>
+                        <tr>
+                            <th class="p-3">Position</th>
+                            <th class="p-3">Rationale</th>
+                            <th class="p-3">RFI Range Sample (Key Hands)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-3 font-semibold">UTG (Under the Gun)</td>
+                            <td class="p-3">Act first post-flop. Must be extremely tight to compensate for position disadvantage.</td>
+                            <td class="p-3">Pairs: 99+ | Suited: AKs, AQs, KQs | Offsuit: AKo, AQo</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold">MP (Middle Position)</td>
+                            <td class="p-3">Slightly more relaxed. Can add some mid-suited connectors as bluffs.</td>
+                            <td class="p-3">Pairs: 88+ | Suited: AJs+, KJs+, T9s | Offsuit: AJo, KQo</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold">CO (Cut-Off)</td>
+                            <td class="p-3">The first 'stealing' position. Opens wide because only three players remain to act.</td>
+                            <td class="p-3">Pairs: 66+ | Suited: A2s+, Q9s+, 76s+ | Offsuit: KTo+</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold">BTN (Button)</td>
+                            <td class="p-3">Act last post-flop. The single most profitable position. Maximize volume here.</td>
+                            <td class="p-3">Pairs: 22+ | Suited: All Aces, Kxs+, all connectors | Offsuit: KTo+, QTo+</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">2.2 3-Betting Strategy (Value vs. Bluff)</h4>
+            <p class="text-gray-400 mb-4">
+                A **3-Bet** is re-raising an open raise. Your 3-betting range should be **Polarized** from the Blinds (SB/BB), meaning it contains your best hands (AA, KK, AK) and your best bluffs (hands with good equity that block your opponent's best hands, like A5s).
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2 mb-6">
+                <li>**Value Hands (Top):** AA, KK, QQ, AK. These are for maximum profit.</li>
+                <li>**Bluff Hands (Bottom):** Suited A-X (A5s-A2s) and suited connectors (87s, 76s, 65s). These have great playability if called and block opponent's premium hands.</li>
+            </ul>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">2.3 Cold Calling and Defending the Big Blind</h4>
+            <p class="text-gray-400 mb-4">
+                Cold calling (simply calling a raise when you haven't put money in yet) is a leak if done too often. You should primarily defend your **Big Blind (BB)** because of the pot odds you are getting.
+            </p>
+            <p class="text-gray-300 mt-4 border-l-4 border-gray-600 pl-4 py-2">
+                **BB Defense:** When facing a 3x BB open, you only need ~25% equity to call. You can defend an extremely wide range (up to 70% of hands!) against a late-position raise, favoring hands that realize equity well (suited hands, pairs, broadways).
+            </p>
+        </section>
+
+        <!-- --- Module 3: Bankroll Management and The Mental Game --- -->
+        <section class="bg-card p-6 sm:p-10 rounded-xl shadow-2xl">
+            <h3 class="text-3xl font-extrabold text-white module-header mb-8">
+                Module 3: BRM, Game Selection, and The Mental Game <span class="text-accent">🧠💰</span>
+            </h3>
+
+            <p class="text-gray-300 mb-6">
+                Technical skill is useless without discipline. This module covers the financial and psychological frameworks for long-term survival.
+            </p>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">3.1 Bankroll Rules: Cash Games vs. Tournaments (MTT)</h4>
+            <p class="text-gray-400 mb-4">
+                Variance is higher in tournaments, requiring a deeper bankroll.
+            </p>
+
+            <div class="overflow-x-auto my-6">
+                <table class="course-table min-w-full text-left rounded-lg overflow-hidden">
+                    <thead>
+                        <tr>
+                            <th class="p-3">Format</th>
+                            <th class="p-3">Min Buy-in Requirement</th>
+                            <th class="p-3">Move Down Point</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-3 font-semibold">Cash Games (NLH)</td>
+                            <td class="p-3">20 Buy-Ins (BI)</td>
+                            <td class="p-3">If bankroll drops below 15 BI</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold">Multi-Table Tournaments (MTT)</td>
+                            <td class="p-3">100 Buy-Ins (BI)</td>
+                            <td class="p-3">If bankroll drops below 75 BI</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-gray-300 mt-4 border-l-4 border-gray-600 pl-4 py-2">
+                **The Iron Rule:** If your bankroll requires you to move down, **do it immediately** without question. This is the difference between surviving a downswing and going broke.
+            </p>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">3.2 Game Selection: Choosing Profitable Tables</h4>
+            <p class="text-gray-400 mb-4">
+                Your skill only accounts for half your win rate; **Game Selection** accounts for the other half. The goal is to always play with worse players than yourself.
+            </p>
+            <ul class="list-disc list-inside text-gray-300 ml-4 space-y-2 mb-6">
+                <li>**Look for the Fish:** Identify loose, passive players (VPIP > 30%) or those making fundamental errors (limping, calling too much, checking too often).</li>
+                <li>**Target Position:** Position yourself immediately to the left of the weakest player to gain position on them most often.</li>
+                <li>**Table Leave Rule:** If you lose a large pot to a bad player, stay. If you lose a large pot to a good player who is crushing you, leave.</li>
+            </ul>
+
+            <h4 class="text-2xl font-semibold text-accent mb-4">3.3 The Mental Game and Tilt Control</h4>
+            <p class="text-gray-400 mb-4">
+                **Tilt** is playing sub-optimally due to emotional distress (anger, frustration, fear). It is the single largest leak for winning players.
+            </p>
+            <p class="text-white font-bold mb-2">The 5 R's of Emotional Control:</p>
+            <ol class="list-decimal list-inside text-gray-300 ml-4 space-y-2">
+                <li>**Recognize:** Identify the physical and mental signs of tilt (rapid heart rate, shallow breathing, desire to "get back" losses).</li>
+                <li>**Refocus:** Remind yourself of your pre-defined, optimal strategy (your charts and math rules).</li>
+                <li>**Respond:** Take a short break (5 minutes). Get water, stretch, or step away from the screen.</li>
+                <li>**Review:** Objectively analyze the hand that caused the tilt (Was it a bad play or bad luck?).</li>
+                <li>**Repeat:** Commit to returning to your A-Game. If you can't, use your **Stop-Loss Rule** and end the session.</li>
+            </ol>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="mt-16 text-center">
+            <h3 class="text-4xl font-black text-accent mb-4">Course 101 Complete!</h3>
+            <p class="text-xl text-gray-300">
+                You now possess the foundational pillars of winning poker: rigorous math, disciplined strategy, and psychological control. Apply these principles consistently.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 bg-card py-6 border-t border-gray-700 text-center text-gray-500">
+        <p>MAXIMIZE YOUR EDGE | &copy; 2025 Poker Curriculum</p>
+    </footer>
+
+</body>
+</html>
