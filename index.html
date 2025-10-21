@@ -8,10 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Stripe.js Library for payment processing -->
-    <script src="https://js.stripe.com/v3/"></script>
-
     <style>
         /* General Body and Font Styles */
         body {
@@ -102,9 +98,6 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            /* Object-fit and aspect ratio for better display of profile picture */
-            aspect-ratio: 4/3; 
-            object-fit: cover;
         }
 
         /* Call-to-Action (CTA) Button - Standard */
@@ -201,74 +194,85 @@
             color: #b0b0b0;
             line-height: 1.5;
         }
-        
-        /* New container for the course cards (to display 3 in a row) */
-        .course-tiers {
+
+        /* --- New Course Curriculum Section Styling (Customized) --- */
+        .curriculum-section {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+        .curriculum-section h2 {
+            font-size: 30px;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+        .curriculum-section > p {
+            font-size: 16px;
+            color: #b0b0b0;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        .course-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 40px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
         }
-
-        /* Course Card Styling */
         .course-card {
-            background-color: #2c2c2c;
+            background-color: #141414;
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
             text-align: center;
-            /* Removed max-width and auto margin for grid use */
-            margin: 0; 
-            max-width: none;
-            transition: transform 0.3s;
-            border: 2px solid #e74c3c; /* Highlight the course */
+            border: 1px solid #333;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
         .course-card:hover {
-            transform: scale(1.02);
+             border-color: #e74c3c;
+             box-shadow: 0 8px 20px rgba(231, 76, 60, 0.2);
         }
         .course-card h3 {
+            font-size: 22px;
             color: #e74c3c;
-            font-size: 24px; /* Slightly smaller for 3 columns */
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             text-transform: uppercase;
         }
         .course-card .price {
-            font-size: 28px; /* Slightly smaller for 3 columns */
+            font-size: 32px;
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 20px;
+            display: block;
         }
-        .course-card ul {
+        .course-features {
             list-style: none;
             padding: 0;
+            margin: 0 0 30px 0;
             text-align: left;
-            margin-bottom: 30px;
-            color: #d0d0d0;
-            min-height: 150px; /* Ensures cards are roughly the same height */
         }
-        .course-card ul li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
+        .course-features li {
             font-size: 15px;
-            border: none;
-            background-color: transparent;
-            box-shadow: none;
-            transition: none;
+            color: #d0d0d0;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
-        .course-card ul li::before {
-            content: "✓";
-            color: #2ecc71; /* Green checkmark */
+        .course-features li::before {
+            content: '✓';
+            color: #2ecc71;
             font-weight: bold;
-            position: absolute;
-            left: 0;
-            top: 0;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
         }
-        /* End Course Card Styling */
+        /* Overriding base CTA for curriculum cards for a more specific look */
+        .course-card .cta-button {
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        /* --- End New Course Curriculum Section Styling --- */
 
         /* Testimonials Section Styling */
         .testimonials-section {
@@ -311,7 +315,7 @@
             display: block;
         }
         
-        /* --- Coaching Application Form Styling (Existing) --- */
+        /* --- Coaching Application Form Styling (New) --- */
         .coaching-form-container {
             max-width: 900px;
             margin: 40px auto 0;
@@ -429,15 +433,11 @@
             .section h2 {
                 font-size: 28px;
             }
-            .services-list, .tiers-list {
+            .services-list, .tiers-list, .course-grid {
                 grid-template-columns: 1fr;
             }
             .testimonial-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .course-tiers {
-                grid-template-columns: 1fr; /* Stack course cards on mobile */
                 gap: 20px;
             }
             /* Mobile specific form adjustments */
@@ -452,8 +452,7 @@
     <header class="header">
         <div class="logo">Will Givens</div>
         <nav class="nav">
-            <a href="#courses">Courses</a>
-            <a href="#apply">Apply</a>
+            <a href="#courses">Courses</a> <a href="#apply">Apply</a> 
             <a href="#coaching-services">Coaching</a>
             <a href="#testimonials">Testimonials</a>
             <a href="#about">About</a>
@@ -466,269 +465,293 @@
             <h1>I want to help you win a bracelet! 🏆</h1>
         </div>
 
-        <section class="content-section" id="about">
+        <section class="content-section">
             <div class="text-content">
-                <h1>Level Up Your Game with Proven Strategies</h1>
-                <p>Stop guessing at the tables. Will Givens has distilled years of high-stakes experience into actionable, proven strategies that turn losing players into winners. Whether you're a micro-stakes grinder or looking to dominate your local tournament, we have the coaching to get you there.</p>
-                <!-- CTA button now directs to the new course -->
-                <a href="#courses" class="cta-button">See Our Courses</a>
+                <h1>Will Givens: Your Path to Poker Greatness</h1>
+                <p>Cashed for over $3.3 million. A WSOP bracelet winner and your coach for mastering live and online poker tournaments.</p>
+                <a href="#apply" class="cta-button">Apply Now</a>
             </div>
             <div class="image-container">
-                <!-- UPDATED: Using the uploaded image file -->
-                <img src="image_112804.png" alt="Professional Poker Coach Will Givens" onerror="this.onerror=null; this.src='https://placehold.co/600x400/3c3c3c/ffffff?text=Will+Givens+Poker+Coach';">
+                <img src="will-givens-wsop-winner.jpg" alt="Will Givens winning a WSOP bracelet">
             </div>
         </section>
 
         <div class="section-separator"></div>
 
-        <!-- UPDATED COURSES SECTION with 3 Tiers -->
-        <section id="courses" class="section">
+        <section id="about" class="section">
+            <h2>About Will Givens</h2>
+            <p>Will Givens is a decorated poker professional with a career spanning over a decade, amassing over $3.3 million in live tournament earnings. His journey is marked by an unwavering dedication to the game and a consistent ability to perform at the highest level. From the high-stakes tables in Las Vegas to major tours across the United States, Will has demonstrated the skill, discipline, and strategic mindset required to dominate the felt, making him an ideal coach for players looking to elevate their game.</p>
+        </section>
+
+        <div class="section-separator"></div>
+
+        <section class="section">
+            <h2>Career Highlights</h2>
+            <p>
+                Will's impressive track record includes a multitude of deep runs, final table appearances, and outright victories against some of the world's best players.
+            </p>
+            <br>
+            <p style="text-align: left; max-width: 800px; margin: auto;">
+                <p>
+                    His best live cash is $306,000, a significant achievement that showcases his ability to perform under pressure in a major tournament.
+                </p>
+                <br>
+                <p>
+                    A 6th place finish at the WPT Venetian Main Event, a high-profile final table performance that secured a cash of $87,760. He also took 4th place at the WPT Maryland Main Event, cashing for $121,112.
+                </p>
+                <br>
+                <p>
+                    He has racked up numerous other 1st place finishes in major circuits, including several WSOP Circuit events, the Wynn Millions Poker Series, and the WPT Borgata Winter Poker Open.
+                </p>
+            </p>
+        </section>
+
+        <div class="section-separator"></div>
+
+        <section id="courses" class="curriculum-section" style="background-color: #0d0d0d;">
             <h2>The Curriculum: From Basics to GTO Mastery</h2>
-            <p>Choose the path that matches your current skill level and ambition. Each course provides lifetime access to high-quality video lectures, hand examples, and downloadable resources.</p>
-            
-            <div class="course-tiers">
-                
-                <!-- COURSE 1: 101 The Basics -->
+            <p>
+                Choose the path that matches your current skill level and ambition. Each course provides lifetime access to high-quality video lectures, hand examples, and downloadable resources.
+            </p>
+
+            <div class="course-grid">
                 <div class="course-card">
-                    <h3>Poker Coaching: 101 The Basics</h3>
-                    <div class="price">$99.00 USD</div>
-                    <ul>
+                    <h3>POKER COACHING: 101<br>THE BASICS</h3>
+                    <span class="price">$99.00 USD</span>
+                    <ul class="course-features">
                         <li>Understand Hand Equity and Pot Odds</li>
                         <li>Solid GTO-Based Pre-Flop Charts (Small Stakes)</li>
                         <li>Introduction to Positional Play</li>
                         <li>Essential Bankroll Management Guide</li>
                         <li>Lifetime Access to Course Content</li>
                     </ul>
-                    <button id="checkout-button-101" class="cta-button">Enroll Now for $99</button>
+                    <a href="#apply" class="cta-button">ENROLL NOW FOR $99</a>
                 </div>
 
-                <!-- COURSE 2: 201 Post-Flop Dominance (New Intermediate Course) -->
                 <div class="course-card">
-                    <h3>201 Post-Flop Dominance</h3>
-                    <div class="price">$299.00 USD</div>
-                    <ul>
+                    <h3>201 POST-FLOP<br>DOMINANCE</h3>
+                    <span class="price">$299.00 USD</span>
+                    <ul class="course-features">
                         <li>Master C-Betting Strategy (Single-Raised Pots)</li>
                         <li>Advanced Turn and River Bluffing Tactics</li>
                         <li>Exploiting Common Opponent Leaks</li>
                         <li>Reading Board Textures & Range Advantage</li>
                         <li>100+ Post-Flop Hand Examples</li>
                     </ul>
-                    <button id="checkout-button-201" class="cta-button">Level Up for $299</button>
+                    <a href="#apply" class="cta-button">LEVEL UP FOR $299</a>
                 </div>
 
-                <!-- COURSE 3: 301 GTO Solver Strategy (New Advanced Course) -->
                 <div class="course-card">
-                    <h3>301 GTO Solver Strategy</h3>
-                    <div class="price">$599.00 USD</div>
-                    <ul>
+                    <h3>301 GTO SOLVER<br>STRATEGY</h3>
+                    <span class="price">$599.00 USD</span>
+                    <ul class="course-features">
                         <li>Deep Dive into Game Theory Optimal (GTO) Principles</li>
                         <li>Introduction to PioSolver & Equivalent Tools</li>
                         <li>Analyzing Mixed Frequencies & Indifference</li>
                         <li>Advanced 3-Bet/4-Bet Pot Strategy</li>
                         <li>Strategies for High-Stakes Environment</li>
                     </ul>
-                    <button id="checkout-button-301" class="cta-button">Master GTO for $599</button>
+                    <a href="#apply" class="cta-button">MASTER GTO FOR $599</a>
                 </div>
             </div>
         </section>
-
         <div class="section-separator"></div>
 
-        <!-- Coaching Services Section (Existing Content Structure) -->
         <section id="coaching-services" class="services-section">
-            <h2>Individual Coaching & Advanced Tiers</h2>
-            <p>Beyond the courses, unlock your peak performance with personalized, one-on-one coaching sessions and tailored study plans.</p>
-            
+            <h2>Our Coaching Services</h2>
+            <p>Will's coaching is less about rigid rules and more about developing a deep, intuitive feel for the game. We focus on teaching you how to think like an elite pro, not just memorize charts. Our curriculum and services are designed to build a complete player.</p>
+
+            <h3>Core Content and Curriculum</h3>
             <ul class="services-list">
                 <li>
-                    <strong>Hand History Review</strong>
-                    <p>Submit your key hands and get detailed, GTO-informed analysis on spots you struggled with. Identify leaks fast.</p>
+                    <strong>Advanced Hand Reading and Opponent Analysis</strong>
+                    <p>Learn how to deduce opponent's holdings and thought processes by analyzing physical and online tells, betting patterns, and constructing accurate hand ranges.</p>
                 </li>
                 <li>
-                    <strong>Live Play Session</strong>
-                    <p>Play a session while Will observes and gives real-time feedback on your decisions, sizing, and mental game.</p>
+                    <strong>The "Mental Game" and "Table Presence"</strong>
+                    <p>Master emotional control, avoid tilt, and use your table image to manipulate opponents. This unique focus is a cornerstone of becoming a truly great player.</p>
                 </li>
                 <li>
-                    <strong>Advanced Theory Sessions</strong>
-                    <p>Deep dives into specific game states, ranging, equity calculations, and solver outputs for high-level strategy.</p>
+                    <strong>Deep Stack and High-Stakes Strategy</strong>
+                    <p>Delve into the complex, multi-street strategies required in high-stakes cash games, including creative bet-sizing, thin value betting, and advanced bluffing.</p>
+                </li>
+                <li>
+                    <strong>Exploitative Play and Deviating from GTO</strong>
+                    <p>Go beyond Game Theory Optimal (GTO) play. Learn how to identify and exploit weaknesses in your opponents to maximize your edge against them.</p>
+                </li>
+                <li>
+                    <strong>Hand Histories and Real-Life Examples</strong>
+                    <p>Gain direct insight into Will's thought process by breaking down iconic and lesser-known hands he has played in crucial moments.</p>
+                </li>
+            </ul>
+
+            <h3>Services and Membership Tiers</h3>
+            <ul class="tiers-list">
+                <li>
+                    <strong>Video Courses and Lessons</strong>
+                    <p>Access a library of pre-recorded videos on specific topics, with frequent updates and a wide range of content.</p>
+                </li>
+                <li>
+                    <strong>Hand History Reviews</strong>
+                    <p>Submit your own hands for detailed video or written critiques from Will's team of hand-picked coaches.</p>
+                </li>
+                <li>
+                    <strong>Community Forums and Discussion Boards</strong>
+                    <p>Join a private community to discuss hands, share strategies, and interact with coaches and other students.</p>
+                </li>
+                <li>
+                    <strong>Personalized 1-on-1 Coaching</strong>
+                    <p>The most exclusive tier for serious players, offering private sessions with Will Givens himself.</p>
+                </li>
+                <li>
+                    <strong>Drills and Quizzes</strong>
+                    <p>Practice and internalize concepts with interactive tools like a hand reading trainer, quizzes on specific situations, and pre-flop range quizzes.</p>
                 </li>
             </ul>
         </section>
 
         <div class="section-separator"></div>
 
-        <!-- Testimonials Section (Existing Content Structure) -->
-        <section id="testimonials" class="testimonials-section">
-            <h2>Success Stories</h2>
-            <p>Don't just take our word for it. Our students are achieving real results at the tables.</p>
+        <section id="apply" class="section">
+            <h2>Apply for Exclusive Coaching</h2>
+            <p>Tell us about your game, your goals, and your experience so we can tailor the perfect coaching plan to help you win your first bracelet.</p>
             
+            <div class="coaching-form-container">
+                <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSddw-2S3gEnzD_73ZqbEJCUaZMokUy2qvvrGoFWEzjj6yjPnw/formResponse" method="POST" target="_blank">
+
+                    <h3>Contact Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first_name">First Name (Required)</label>
+                            <input type="text" id="first_name" name="entry.1144330237" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name (Required)</label>
+                            <input type="text" id="last_name" name="entry.1201305835" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email (Required)</label>
+                            <input type="email" id="email" name="entry.828854700" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="entry.228711533">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="state">State / Province</label>
+                            <input type="text" id="state" name="entry.365805916">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" name="entry.128074312">
+                        </div>
+                    </div>
+
+                    <div class="section-separator" style="margin: 20px auto;"></div>
+
+                    <h3>Poker Game & Finance Details</h3>
+
+                    <div class="form-group">
+                        <label for="bankroll">Current Poker Bankroll (USD)</label>
+                        <select id="bankroll" name="entry.1634571265">
+                            <option value="">Select an approximate range</option>
+                            <option value="Under $1,000 (Micro Stakes)">Under $1,000 (Micro Stakes)</option>
+                            <option value="$1,000 - $5,000">$1,000 - $5,000 (Low Stakes)</option>
+                            <option value="$5,001 - $20,000">$5,001 - $20,000 (Mid Stakes)</option>
+                            <option value="Over $20,000">Over $20,000 (High Stakes)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="format">Primary Format</label>
+                            <select id="format" name="entry.843853463">
+                                <option value="">Select a format</option>
+                                <option value="Tournaments (MTTs)">Tournaments (MTTs)</option>
+                                <option value="Cash Games">Cash Games</option>
+                                <option value="Mixed/Other">Mixed/Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="stakes">Average Stakes/Buy-in Level</label>
+                            <input type="text" id="stakes" name="entry.870153605" placeholder="e.g., $1/$2 Cash or $50 Buy-in MTTs">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goals">Goals for Coaching (What do you want to achieve?)</label>
+                        <textarea id="goals" name="entry.1932284768"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="history">Tell Me About How You Got Into Poker</label>
+                        <textarea id="history" name="entry.784812248"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="help">What Can I Do To Help You The Best?</label>
+                        <textarea id="help" name="entry.790460400"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="source">How Did You Hear About Will Givens?</label>
+                        <select id="source" name="entry.1750645726">
+                            <option value="">Select an option</option>
+                            <option value="Referral/Friend">Referral/Friend</option>
+                            <option value="Social Media (Twitter/FB/IG)">Social Media (Twitter/FB/IG)</option>
+                            <option value="Google Search">Google Search</option>
+                            <option value="Poker News/Article">Poker News/Article</option>
+                            <option value="WSOP/Hendon Mob">WSOP/Hendon Mob</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button type="submit" class="form-button">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <div class="section-separator"></div>
+
+        <section id="testimonials" class="testimonials-section">
+            <h2>Hear From Our Winning Students</h2>
             <div class="testimonial-grid">
                 <div class="testimonial-card">
-                    <span class="author">Mike T.</span>
-                    <span class="achievement">Crushed NL25 to NL100</span>
-                    <blockquote>"Will's coaching helped me realize how much I was guessing post-flop. I've tripled my monthly win rate since implementing his pre-flop system."</blockquote>
-                </div>
-                <div class="testimonial-card">
-                    <span class="author">Sarah L.</span>
-                    <span class="achievement">Final Table at Local Tournament</span>
-                    <blockquote>"The mental game advice was a game-changer. I feel calm under pressure now and my bankroll is finally growing."</blockquote>
-                </div>
-                <div class="testimonial-card">
+                    <blockquote>"Will's focus on the mental game completely changed how I approach tough spots. I used to tilt away my profits, now I'm making deep runs consistently. The hands-on review was game-changing."</blockquote>
                     <span class="author">Alex P.</span>
-                    <span class="achievement">Quit His Day Job to Play Semi-Pro</span>
-                    <blockquote>"Worth every penny. The clarity and structure of the advanced sessions gave me the confidence to move up in stakes."</blockquote>
+                    <span class="achievement">WSOP Circuit Ring Winner</span>
+                </div>
+                <div class="testimonial-card">
+                    <blockquote>"The exploitative strategy content is gold. I immediately noticed my win-rate increase in my local cash games. Best poker investment I've ever made. Highly recommend the private sessions."</blockquote>
+                    <span class="author">Maria S.</span>
+                    <span class="achievement">High-Stakes Cash Game Regular</span>
+                </div>
+                <div class="testimonial-card">
+                    <blockquote>"I went from a break-even amateur to final-tabling a major online event in six months. The curriculum is detailed, but what stands out is the personalized feedback. A true coach!"</blockquote>
+                    <span class="author">Ben L.</span>
+                    <span class="achievement">Online MTT Grinder</span>
                 </div>
             </div>
         </section>
 
         <div class="section-separator"></div>
 
-        <!-- Contact/Application Section (Existing Content Structure) -->
-        <section id="apply" class="section">
-            <h2>Apply for 1-on-1 Coaching</h2>
-            <p>Fill out the application below to see if you are a good fit for Will's intensive personalized coaching program.</p>
-            
-            <div class="coaching-form-container" id="email-contact">
-                <h3>Coaching Inquiry Form</h3>
-                <form onsubmit="event.preventDefault(); showNotification('Application submitted successfully! Will will be in touch soon.');">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="phone">Phone Number (Optional)</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="stakes">Current Stakes/Game Type</label>
-                            <select id="stakes" name="stakes" required>
-                                <option value="" disabled selected>Select your game</option>
-                                <option value="micro">Micro Stakes (NL2-NL10)</option>
-                                <option value="low">Low Stakes (NL25-NL100)</option>
-                                <option value="mid">Mid Stakes (NL200+)</option>
-                                <option value="tournament">Tournaments (MTTs)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="goals">What are your poker goals?</label>
-                        <textarea id="goals" name="goals" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="form-button">Submit Application</button>
-                </form>
-            </div>
+        <section id="email-contact" class="section">
+            <h2>Alternative Contact</h2>
+            <p>If you prefer not to use the application form, you can email us directly at:</p>
+            <p style="color: #e74c3c; font-size: 28px; font-weight: 700; margin-top: 10px;">welcome@willgivens.com</p>
+            <a href="mailto:welcome@willgivens.com" class="cta-button">Email Now</a>
         </section>
 
     </main>
 
-    <!-- Simple Footer -->
-    <footer class="section" style="padding: 20px; font-size: 14px; background-color: #000000; margin-top: 50px; border-top: 1px solid #333;">
-        &copy; 2024 Will Givens Poker Coaching. All rights reserved.
-    </footer>
-
-    <script>
-        // --- Stripe Payment Integration Logic ---
-
-        // 1. Initialize Stripe with your Public Key
-        // IMPORTANT: Replace 'pk_test_XXXXXXXXXXXXXXXXXXXXXXXX' with Will's actual Stripe Publishable Key.
-        const stripe = Stripe('pk_test_51O8G0eKj0V9UqK7HqY37eT298h496h3V6q1hD334I1j9E2496V2y5vR4nN791L3dF5vQ0w68rI1J8T00H98h7k5'); // Placeholder Key
-
-        const courses = {
-            'checkout-button-101': {
-                name: 'Poker Coaching: 101 The Basics',
-                priceId: 'price_1PQR4G2eF3kFh4y5MvE6o7p8T9uV0wXyZ_101', // Mock Price ID
-                mockSessionId: 'cs_test_a1Wc02sY2j9n7h5p4o3L2m1K0qR8uT7v6B5a4X3y2Z1E0x9w8_101'
-            },
-            'checkout-button-201': {
-                name: '201 Post-Flop Dominance',
-                priceId: 'price_1PQR4G2eF3kFh4y5MvE6o7p8T9uV0wXyZ_201', // Mock Price ID
-                mockSessionId: 'cs_test_a1Wc02sY2j9n7h5p4o3L2m1K0qR8uT7v6B5a4X3y2Z1E0x9w8_201'
-            },
-            'checkout-button-301': {
-                name: '301 GTO Solver Strategy',
-                priceId: 'price_1PQR4G2eF3kFh4y5MvE6o7p8T9uV0wXyZ_301', // Mock Price ID
-                mockSessionId: 'cs_test_a1Wc02sY2j9n7h5p4o3L2m1K0qR8uT7v6B5a4X3y2Z1E0x9w8_301'
-            }
-        };
-
-        // Attach listeners to all checkout buttons
-        Object.keys(courses).forEach(buttonId => {
-            const button = document.getElementById(buttonId);
-            if (button) {
-                button.addEventListener('click', () => handleCheckout(buttonId));
-            }
-        });
-
-
-        async function handleCheckout(buttonId) {
-            const course = courses[buttonId];
-            
-            // ** CRITICAL STEP: Server-Side Checkout Session Creation **
-            // In a real application, this client-side code MUST trigger a request to your secure backend server.
-            // The server will use the Stripe Secret Key to create a Checkout Session and return the session ID.
-
-            // Replace the 'fetch' call below with a real one to your server endpoint, e.g., '/create-checkout-session'
-            try {
-                // --- Start Mock/Placeholder Logic ---
-                // For a live application, uncomment the real fetch and remove the mockSessionId line below it.
-
-                /*
-                const response = await fetch('/create-checkout-session', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ priceId: course.priceId })
-                });
-                const session = await response.json();
-                */
-
-                const mockSessionId = course.mockSessionId; 
-                // --- End Mock/Placeholder Logic ---
-
-
-                // 2. Redirect to Stripe Checkout
-                const { error } = await stripe.redirectToCheckout({
-                    sessionId: mockSessionId // Must be replaced with the real session.id from your server response
-                });
-
-                if (error) {
-                    console.error('Stripe Checkout Error:', error.message);
-                    showNotification(`Payment Error: Could not start checkout for ${course.name}. Check console.`);
-                }
-            } catch (error) {
-                console.error('API Call Error:', error);
-                showNotification(`Server Error: Cannot connect to payment processor for ${course.name}.`);
-            }
-        }
-        
-        // Simple notification function (replaces alert())
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.textContent = message;
-            // Added simple CSS for the notification box
-            notification.style.cssText = `
-                position: fixed; 
-                top: 100px; 
-                right: 20px; 
-                background: #c0392b; 
-                color: white; 
-                padding: 15px 25px; 
-                border-radius: 8px; 
-                z-index: 2000;
-                font-size: 14px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            `;
-            document.body.appendChild(notification);
-            setTimeout(() => notification.remove(), 7000);
-        }
-
-    </script>
 </body>
 </html>
 
