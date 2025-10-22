@@ -102,9 +102,6 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            /* Object-fit and aspect ratio for better display of profile picture */
-            aspect-ratio: 4/3; 
-            object-fit: cover;
         }
 
         /* Call-to-Action (CTA) Button - Standard */
@@ -474,8 +471,8 @@
                 <a href="#courses" class="cta-button">See Our Courses</a>
             </div>
             <div class="image-container">
-                <!-- UPDATED: Using the uploaded image file -->
-                <img src="image_112804.png" alt="Professional Poker Coach Will Givens" onerror="this.onerror=null; this.src='https://placehold.co/600x400/3c3c3c/ffffff?text=Will+Givens+Poker+Coach';">
+                <!-- Placeholder Image for Will Givens/Poker Success -->
+                <img src="https://placehold.co/600x400/3c3c3c/ffffff?text=Will+Givens+Poker+Coach" alt="Professional Poker Coach Will Givens">
             </div>
         </section>
 
@@ -590,7 +587,7 @@
             
             <div class="coaching-form-container" id="email-contact">
                 <h3>Coaching Inquiry Form</h3>
-                <form onsubmit="event.preventDefault(); showNotification('Application submitted successfully! Will will be in touch soon.');">
+                <form onsubmit="event.preventDefault(); alert('Application submitted successfully! Will will be in touch soon.');">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Full Name</label>
@@ -711,7 +708,6 @@
         function showNotification(message) {
             const notification = document.createElement('div');
             notification.textContent = message;
-            // Added simple CSS for the notification box
             notification.style.cssText = `
                 position: fixed; 
                 top: 100px; 
