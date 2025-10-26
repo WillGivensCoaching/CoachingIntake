@@ -6,6 +6,10 @@
     <title>Course 102: Advanced Post-Flop Play (Expanded)</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load KaTeX CSS for mathematical formulas -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" xintegrity="sha384-GvrF9ZK52TjLwK4/B3B1T/Xo4m0/X0/A4/V7hIe3T4cI6U5p4+A6p7I3+B9P6w+" crossorigin="anonymous">
+
     <style>
         /* Custom font and colors for the dark, high-contrast theme */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
@@ -35,6 +39,12 @@
             font-size: 1.1rem;
             overflow-x: auto;
             border-radius: 6px;
+        }
+        /* Style the rendered KaTeX display math block */
+        .formula .katex-display {
+            font-family: 'Inter', sans-serif !important;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
         }
         .course-table th {
             background-color: #4c8de5;
@@ -362,5 +372,25 @@
         <p>MAXIMIZE YOUR EDGE | &copy; 2025 Poker Curriculum</p>
     </footer>
 
+    <!-- KaTeX JS for rendering math formulas -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" xintegrity="sha384-UqX4C252wYQ0G3I8P62F6oG6B6y2Bq8Bf4U9h2+F7C6z/q9f9O+0+A7q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" xintegrity="sha384-+yW0t9+fH/b2WqP0j0gW0f3I8P62F6oG6B6y2Bq8Bf4U9h2+F7C6z/q9f9O+0+A7q" crossorigin="anonymous"></script>
+    
+    <script>
+        // Initialize KaTeX auto-render on document load
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                // Delimiters for display math (block formulas: $$...$$) and inline math (single dollar signs: $...$)
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\(", right: "\\)", display: false}
+                ],
+                // Display mode options
+                throwOnError : false
+            });
+        });
+    </script>
 </body>
 </html>
