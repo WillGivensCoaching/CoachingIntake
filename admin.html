@@ -246,6 +246,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Joined</th>
+                            <th>Premium</th>
                             <th>Course 101</th>
                             <th>Course 102</th>
                             <th>Course 103</th>
@@ -253,7 +254,7 @@
                     </thead>
                     <tbody id="usersTableBody">
                         <tr>
-                            <td colspan="6" class="no-users">No users found</td>
+                            <td colspan="7" class="no-users">No users found</td>
                         </tr>
                     </tbody>
                 </table>
@@ -311,19 +312,26 @@
             const tbody = document.getElementById('usersTableBody');
             
             if (users.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" class="no-users">No users found</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="7" class="no-users">No users found</td></tr>';
                 return;
             }
 
             tbody.innerHTML = users.map(user => {
                 const joinedDate = user.createdAt ? new Date(user.createdAt.seconds * 1000).toLocaleDateString() : 'N/A';
                 const courses = user.courses || {};
+                const isPremium = user.isPremium || false;
                 
                 return `
                     <tr>
                         <td><strong>${user.firstName} ${user.lastName}</strong></td>
                         <td class="email-text">${user.email}</td>
                         <td class="date-text">${joinedDate}</td>
+                        <td>
+                            <div class="course-toggle ${isPremium ? 'active' : 'inactive'}" 
+                                 onclick="togglePremium('${user.id}', ${!isPremium})">
+                                ${isPremium ? '⭐ Premium' : '✗ Free'}
+                            </div>
+                        </td>
                         <td>
                             <div class="course-toggle ${courses.course101 ? 'active' : 'inactive'}" 
                                  onclick="toggleCourse('${user.id}', 'course101', ${!courses.course101})">
@@ -346,6 +354,27 @@
                 `;
             }).join('');
         }
+
+        window.togglePremium = async function(userId, newValue) {
+            try {
+                const userRef = doc(db, 'users', userId);
+                await updateDoc(userRef, {
+                    isPremium: newValue
+                });
+                
+                // Update local data and refresh display
+                const userIndex = allUsers.findIndex(u => u.id === userId);
+                if (userIndex !== -1) {
+                    allUsers[userIndex].isPremium = newValue;
+                    displayUsers(allUsers);
+                }
+                
+                alert(`Premium status ${newValue ? 'enabled' : 'disabled'} successfully!`);
+            } catch (error) {
+                console.error('Error toggling premium:', error);
+                alert('Failed to update premium status. Please try again.');
+            }
+        };
 
         window.toggleCourse = async function(userId, courseId, newValue) {
             try {

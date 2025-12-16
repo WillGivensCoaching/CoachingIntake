@@ -294,6 +294,37 @@
                 <p style="color: #888; margin-bottom: 30px;">Premium members can ask Will 3 questions per month. View answered questions below.</p>
             </div>
 
+            <!-- Premium Membership Prompt -->
+            <div id="premiumPrompt" style="display: none; margin-top: 60px;">
+                <div style="text-align: center; padding: 60px 40px; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 16px; border: 2px solid rgba(243, 156, 18, 0.3);">
+                    <div style="display: inline-block; padding: 8px 20px; background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); color: #ffffff; font-size: 14px; font-weight: 700; text-transform: uppercase; border-radius: 25px; margin-bottom: 20px; letter-spacing: 1px;">⭐ Premium Membership</div>
+                    <h2 style="font-size: 40px; color: #ffffff; margin: 0 0 20px 0;">Unlock Premium Access</h2>
+                    <p style="font-size: 18px; color: #b0b0b0; margin: 0 0 10px 0; max-width: 600px; margin-left: auto; margin-right: auto;">Get direct access to Will Givens with exclusive Q&A privileges</p>
+                    <p style="font-size: 32px; color: #f39c12; font-weight: 700; margin: 20px 0 30px 0;">$19.99<span style="font-size: 18px; color: #888; font-weight: 400;">/month</span></p>
+                    <ul style="list-style: none; padding: 0; margin: 0 0 40px 0; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto;">
+                        <li style="padding: 12px 0; color: #d0d0d0; position: relative; padding-left: 35px;">
+                            <span style="position: absolute; left: 0; color: #2ecc71; font-weight: bold; font-size: 18px;">✓</span>
+                            Ask Will Givens 3 questions per month
+                        </li>
+                        <li style="padding: 12px 0; color: #d0d0d0; position: relative; padding-left: 35px;">
+                            <span style="position: absolute; left: 0; color: #2ecc71; font-weight: bold; font-size: 18px;">✓</span>
+                            Personal answers from a WSOP bracelet winner
+                        </li>
+                        <li style="padding: 12px 0; color: #d0d0d0; position: relative; padding-left: 35px;">
+                            <span style="position: absolute; left: 0; color: #2ecc71; font-weight: bold; font-size: 18px;">✓</span>
+                            Access to community Q&A database
+                        </li>
+                        <li style="padding: 12px 0; color: #d0d0d0; position: relative; padding-left: 35px;">
+                            <span style="position: absolute; left: 0; color: #2ecc71; font-weight: bold; font-size: 18px;">✓</span>
+                            Learn from other members' questions
+                        </li>
+                    </ul>
+                    <a href="#" id="subscribePremiumBtn" style="display: inline-block; padding: 18px 50px; background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); color: #ffffff; text-decoration: none; border-radius: 50px; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(243, 156, 18, 0.3);">
+                        Subscribe Now - $19.99/Month
+                    </a>
+                </div>
+            </div>
+
             <!-- Community Q&A Section -->
             <h2 class="section-title" style="margin-top: 60px;">Community Q&A</h2>
             <p style="color: #888; margin-bottom: 30px;">Learn from questions answered by Will Givens</p>
@@ -381,9 +412,18 @@
                 document.getElementById('noCoursesMessage').style.display = 'block';
             }
 
-            // Show premium Q&A section if user is premium
+            // Show premium Q&A section if user is premium, otherwise show upgrade prompt
             if (userData.isPremium) {
                 document.getElementById('premiumQA').style.display = 'block';
+            } else {
+                document.getElementById('premiumPrompt').style.display = 'block';
+                
+                // Handle premium subscription
+                document.getElementById('subscribePremiumBtn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Replace with your Stripe subscription link for $19.99/month
+                    window.open('https://buy.stripe.com/PREMIUM_SUBSCRIPTION_LINK', '_blank');
+                });
             }
 
             // Load community Q&A
