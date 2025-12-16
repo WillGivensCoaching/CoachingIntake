@@ -4,13 +4,13 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, si
 import { getFirestore, doc, setDoc, getDoc, getDocs, updateDoc, collection, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAKTzQmFE8nU4qpw8V-R6suAZSIPaMN-bg",
-  authDomain: "gto-shark.firebaseapp.com",
-  projectId: "gto-shark",
-  storageBucket: "gto-shark.firebasestorage.app",
-  messagingSenderId: "1093311477198",
-  appId: "1:1093311477198:web:7563cb54bef8bb48b5679f",
-  measurementId: "G-RPFSQ6WM51"
+  apiKey: "AIzaSyBmDEeYeZWK4bxtiG5F-aBmOdeVxgKoMMw",
+  authDomain: "will-givens-coaching.firebaseapp.com",
+  projectId: "will-givens-coaching",
+  storageBucket: "will-givens-coaching.firebasestorage.app",
+  messagingSenderId: "614429925782",
+  appId: "1:614429925782:web:f845235a21e67239253db7",
+  measurementId: "G-WL4QZG0N1E"
 };
 
 // Initialize Firebase
