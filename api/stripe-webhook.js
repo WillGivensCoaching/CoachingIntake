@@ -19,11 +19,10 @@ const db = admin.firestore();
 
 // Course ID to Firestore field mapping
 const PRODUCT_MAP = {
-  // Replace these with your actual Stripe Price IDs
-  'price_COURSE101_ID': { type: 'course', field: 'courses.course101' },
-  'price_COURSE102_ID': { type: 'course', field: 'courses.course102' },
-  'price_COURSE103_ID': { type: 'course', field: 'courses.course103' },
-  'price_PREMIUM_ID': { type: 'premium', field: 'isPremium' },
+  'price_15KNgH8x7tmbN9YXjOfG': { type: 'course', field: 'courses.course101' },
+  'price_15KeOsH8x7tmbNszMsYt5G': { type: 'course', field: 'courses.course102' },
+  'price_15KtPOH8x7tmbNUUJufeh': { type: 'course', field: 'courses.course103' },
+  'price_15RzLHRx2btnNhgWsCrYf': { type: 'premium', field: 'isPremium' },
 };
 
 module.exports = async (req, res) => {
