@@ -266,12 +266,17 @@
 
         onAuthStateChanged(auth, async (user) => {
             if (user) {
-                // Check if user is admin
-                const userDoc = await getDoc(doc(db, 'users', user.uid));
-                if (userDoc.exists() && userDoc.data().isAdmin === true) {
+                // Check if user is hardcoded admin or has admin in Firestore
+                if (user.email === 'admin@gmail.com') {
                     loadUsers();
                 } else {
-                    showAccessDenied();
+                    // Check Firestore for other admins
+                    const userDoc = await getDoc(doc(db, 'users', user.uid));
+                    if (userDoc.exists() && userDoc.data().isAdmin === true) {
+                        loadUsers();
+                    } else {
+                        showAccessDenied();
+                    }
                 }
             } else {
                 window.location.href = 'login.html';

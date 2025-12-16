@@ -216,10 +216,9 @@
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
 
-                // Check if user is admin
-                const userDoc = await getDoc(doc(db, 'users', user.uid));
-                
-                if (userDoc.exists() && userDoc.data().isAdmin === true) {
+                // Check if user is admin by email or Firestore
+                if (user.email === 'admin@gmail.com') {
+                    // Hardcoded admin access
                     successMessage.textContent = 'Admin access granted! Redirecting...';
                     successMessage.style.display = 'block';
                     
@@ -227,12 +226,24 @@
                         window.location.href = 'admin.html';
                     }, 1000);
                 } else {
-                    // User is not an admin - sign them out
-                    await auth.signOut();
-                    errorMessage.textContent = 'Access Denied: You do not have administrator privileges.';
-                    errorMessage.style.display = 'block';
-                    loginBtn.disabled = false;
-                    loginBtn.textContent = 'Access Admin Panel';
+                    // Check Firestore for other admins
+                    const userDoc = await getDoc(doc(db, 'users', user.uid));
+                    
+                    if (userDoc.exists() && userDoc.data().isAdmin === true) {
+                        successMessage.textContent = 'Admin access granted! Redirecting...';
+                        successMessage.style.display = 'block';
+                        
+                        setTimeout(() => {
+                            window.location.href = 'admin.html';
+                        }, 1000);
+                    } else {
+                        // User is not an admin - sign them out
+                        await auth.signOut();
+                        errorMessage.textContent = 'Access Denied: You do not have administrator privileges.';
+                        errorMessage.style.display = 'block';
+                        loginBtn.disabled = false;
+                        loginBtn.textContent = 'Access Admin Panel';
+                    }
                 }
             } catch (error) {
                 let message = 'Login failed. Please try again.';
