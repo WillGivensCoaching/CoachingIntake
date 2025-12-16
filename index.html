@@ -36,12 +36,16 @@
             box-sizing: border-box;
         }
         .header .logo {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
-            color: #e74c3c;
-            letter-spacing: 2px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1.5px;
             font-family: 'Poppins', sans-serif;
-            text-shadow: 0 0 20px rgba(231, 76, 60, 0.3);
+            text-transform: uppercase;
+            line-height: 1.2;
         }
         .header .nav a {
             color: #d0d0d0;
@@ -718,7 +722,7 @@
 <body>
 
     <header class="header">
-        <div class="logo">Will Givens</div>
+        <div class="logo">Will Givens Poker Coaching</div>
         <nav class="nav">
             <a href="#courses">Courses</a>
             <a href="#apply">Apply</a>
