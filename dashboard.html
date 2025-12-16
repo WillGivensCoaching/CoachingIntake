@@ -340,7 +340,7 @@
                     <p>${course.description}</p>
                     ${hasAccess 
                         ? `<a href="${course.url}" class="course-btn">Access Course</a>`
-                        : `<button class="course-btn locked" disabled>Purchase Required</button>`
+                        : `<a href="index.html#courses" class="course-btn" style="background: transparent; border: 2px solid #e74c3c; color: #e74c3c;">Purchase Now</a>`
                     }
                 `;
                 
