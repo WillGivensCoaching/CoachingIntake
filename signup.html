@@ -248,16 +248,31 @@
                         course102: false,
                         course103: false
                     },
+                    isPremium: false,
+                    questionsThisMonth: 0,
+                    lastQuestionReset: serverTimestamp(),
                     isAdmin: false,
                     createdAt: serverTimestamp()
                 });
 
-                successMessage.textContent = 'Account created successfully! Redirecting...';
-                successMessage.style.display = 'block';
-                
-                setTimeout(() => {
-                    window.location.href = 'dashboard.html';
-                }, 1500);
+                // Check if there's an intended purchase
+                const intendedPurchase = sessionStorage.getItem('intendedPurchase');
+                if (intendedPurchase) {
+                    const purchase = JSON.parse(intendedPurchase);
+                    sessionStorage.removeItem('intendedPurchase');
+                    successMessage.textContent = 'Account created! Redirecting to purchase...';
+                    successMessage.style.display = 'block';
+                    setTimeout(() => {
+                        window.open(purchase.stripeUrl, '_blank');
+                        window.location.href = 'dashboard.html';
+                    }, 1500);
+                } else {
+                    successMessage.textContent = 'Account created successfully! Redirecting...';
+                    successMessage.style.display = 'block';
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1500);
+                }
             } catch (error) {
                 let message = 'Failed to create account. Please try again.';
                 if (error.code === 'auth/email-already-in-use') {
