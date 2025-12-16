@@ -118,7 +118,13 @@
             position: relative;
         }
         .course-card.locked {
-            /* Removed opacity - keeping only the badge to show locked status */
+            /* Brightened locked cards - same brightness as unlocked */
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .course-card.locked h3,
+        .course-card.locked p {
+            color: #e0e0e0;
         }
         .course-card:not(.locked):hover {
             border-color: #e74c3c;
