@@ -246,6 +246,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Joined</th>
+                            <th>Community</th>
                             <th>Premium</th>
                             <th>Course 101</th>
                             <th>Course 102</th>
@@ -254,7 +255,7 @@
                     </thead>
                     <tbody id="usersTableBody">
                         <tr>
-                            <td colspan="7" class="no-users">No users found</td>
+                            <td colspan="8" class="no-users">No users found</td>
                         </tr>
                     </tbody>
                 </table>
@@ -312,7 +313,7 @@
             const tbody = document.getElementById('usersTableBody');
             
             if (users.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="7" class="no-users">No users found</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="8" class="no-users">No users found</td></tr>';
                 return;
             }
 
@@ -320,12 +321,19 @@
                 const joinedDate = user.createdAt ? new Date(user.createdAt.seconds * 1000).toLocaleDateString() : 'N/A';
                 const courses = user.courses || {};
                 const isPremium = user.isPremium || false;
+                const hasCommunity = user.hasCommunityAccess || false;
                 
                 return `
                     <tr>
                         <td><strong>${user.firstName} ${user.lastName}</strong></td>
                         <td class="email-text">${user.email}</td>
                         <td class="date-text">${joinedDate}</td>
+                        <td>
+                            <div class="course-toggle ${hasCommunity ? 'active' : 'inactive'}" 
+                                 onclick="toggleCommunity('${user.id}', ${!hasCommunity})">
+                                ${hasCommunity ? '✓ Access' : '✗ No Access'}
+                            </div>
+                        </td>
                         <td>
                             <div class="course-toggle ${isPremium ? 'active' : 'inactive'}" 
                                  onclick="togglePremium('${user.id}', ${!isPremium})">
@@ -354,6 +362,27 @@
                 `;
             }).join('');
         }
+
+        window.toggleCommunity = async function(userId, newValue) {
+            try {
+                const userRef = doc(db, 'users', userId);
+                await updateDoc(userRef, {
+                    hasCommunityAccess: newValue
+                });
+                
+                // Update local data and refresh display
+                const userIndex = allUsers.findIndex(u => u.id === userId);
+                if (userIndex !== -1) {
+                    allUsers[userIndex].hasCommunityAccess = newValue;
+                    displayUsers(allUsers);
+                }
+                
+                alert(`Community access ${newValue ? 'granted' : 'revoked'} successfully!`);
+            } catch (error) {
+                console.error('Error toggling community access:', error);
+                alert('Failed to update community access. Please try again.');
+            }
+        };
 
         window.togglePremium = async function(userId, newValue) {
             try {
