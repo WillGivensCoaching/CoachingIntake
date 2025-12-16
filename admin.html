@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Will Givens Poker Coaching</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(231, 76, 60, 0.1);
+            box-sizing: border-box;
+        }
+        .header .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: #e74c3c;
+            letter-spacing: 2px;
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 0 0 20px rgba(231, 76, 60, 0.3);
+        }
+        .header .admin-badge {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .header .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header .logout-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 2px solid #e74c3c;
+            color: #e74c3c;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .header .logout-btn:hover {
+            background: rgba(231, 76, 60, 0.1);
+        }
+        .main-content {
+            padding: 120px 50px 50px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        .page-title {
+            font-size: 48px;
+            color: #ffffff;
+            margin: 0 0 40px 0;
+            font-weight: 700;
+        }
+        .search-bar {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(231, 76, 60, 0.2);
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid rgba(231, 76, 60, 0.2);
+            border-radius: 8px;
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .search-bar input:focus {
+            border-color: #e74c3c;
+            outline: none;
+            box-shadow: 0 0 15px rgba(231, 76, 60, 0.3);
+        }
+        .users-table {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(231, 76, 60, 0.2);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        thead {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+        th {
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+        td {
+            padding: 18px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+        }
+        tbody tr:hover {
+            background-color: rgba(231, 76, 60, 0.05);
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .course-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid;
+        }
+        .course-toggle.active {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            border-color: #2ecc71;
+        }
+        .course-toggle.inactive {
+            background-color: rgba(149, 165, 166, 0.2);
+            color: #95a5a6;
+            border-color: #95a5a6;
+        }
+        .course-toggle:hover {
+            transform: scale(1.05);
+        }
+        .date-text {
+            color: #888;
+            font-size: 13px;
+        }
+        .email-text {
+            color: #e74c3c;
+        }
+        .loading {
+            text-align: center;
+            padding: 100px 20px;
+            font-size: 18px;
+            color: #888;
+        }
+        .no-users {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+        .access-denied {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .access-denied h2 {
+            color: #e74c3c;
+            font-size: 36px;
+            margin: 0 0 20px 0;
+        }
+        .access-denied p {
+            color: #888;
+            font-size: 18px;
+        }
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+            .header .logo {
+                font-size: 24px;
+            }
+            .main-content {
+                padding: 100px 20px 30px;
+            }
+            .page-title {
+                font-size: 32px;
+            }
+            .users-table {
+                overflow-x: auto;
+            }
+            table {
+                min-width: 800px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Will Givens</div>
+        <div class="user-menu">
+            <div class="admin-badge">🔑 Admin</div>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div id="loadingState" class="loading">Loading admin panel...</div>
+        
+        <div id="accessDenied" class="access-denied" style="display: none;">
+            <h2>🚫 Access Denied</h2>
+            <p>You don't have admin privileges to access this page.</p>
+        </div>
+
+        <div id="adminContent" style="display: none;">
+            <h1 class="page-title">User Management</h1>
+
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="🔍 Search by name or email...">
+            </div>
+
+            <div class="users-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Joined</th>
+                            <th>Course 101</th>
+                            <th>Course 102</th>
+                            <th>Course 103</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <tr>
+                            <td colspan="6" class="no-users">No users found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { auth, db, signOut, onAuthStateChanged, doc, getDoc, getDocs, updateDoc, collection, query, orderBy } from './firebase-config.js';
+
+        let allUsers = [];
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // Check if user is admin
+                const userDoc = await getDoc(doc(db, 'users', user.uid));
+                if (userDoc.exists() && userDoc.data().isAdmin === true) {
+                    loadUsers();
+                } else {
+                    showAccessDenied();
+                }
+            } else {
+                window.location.href = 'login.html';
+            }
+        });
+
+        async function loadUsers() {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('adminContent').style.display = 'block';
+
+            try {
+                const usersQuery = query(collection(db, 'users'), orderBy('createdAt', 'desc'));
+                const querySnapshot = await getDocs(usersQuery);
+                
+                allUsers = [];
+                querySnapshot.forEach((doc) => {
+                    allUsers.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
+                });
+
+                displayUsers(allUsers);
+            } catch (error) {
+                console.error('Error loading users:', error);
+            }
+        }
+
+        function displayUsers(users) {
+            const tbody = document.getElementById('usersTableBody');
+            
+            if (users.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="no-users">No users found</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = users.map(user => {
+                const joinedDate = user.createdAt ? new Date(user.createdAt.seconds * 1000).toLocaleDateString() : 'N/A';
+                const courses = user.courses || {};
+                
+                return `
+                    <tr>
+                        <td><strong>${user.firstName} ${user.lastName}</strong></td>
+                        <td class="email-text">${user.email}</td>
+                        <td class="date-text">${joinedDate}</td>
+                        <td>
+                            <div class="course-toggle ${courses.course101 ? 'active' : 'inactive'}" 
+                                 onclick="toggleCourse('${user.id}', 'course101', ${!courses.course101})">
+                                ${courses.course101 ? '✓ Active' : '✗ Inactive'}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="course-toggle ${courses.course102 ? 'active' : 'inactive'}" 
+                                 onclick="toggleCourse('${user.id}', 'course102', ${!courses.course102})">
+                                ${courses.course102 ? '✓ Active' : '✗ Inactive'}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="course-toggle ${courses.course103 ? 'active' : 'inactive'}" 
+                                 onclick="toggleCourse('${user.id}', 'course103', ${!courses.course103})">
+                                ${courses.course103 ? '✓ Active' : '✗ Inactive'}
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        window.toggleCourse = async function(userId, courseId, newValue) {
+            try {
+                const userRef = doc(db, 'users', userId);
+                await updateDoc(userRef, {
+                    [`courses.${courseId}`]: newValue
+                });
+                
+                // Update local data and refresh display
+                const userIndex = allUsers.findIndex(u => u.id === userId);
+                if (userIndex !== -1) {
+                    allUsers[userIndex].courses[courseId] = newValue;
+                    displayUsers(allUsers);
+                }
+            } catch (error) {
+                console.error('Error updating course access:', error);
+                alert('Failed to update course access. Please try again.');
+            }
+        };
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredUsers = allUsers.filter(user => {
+                const fullName = `${user.firstName} ${user.lastName}`.toLowerCase();
+                const email = user.email.toLowerCase();
+                return fullName.includes(searchTerm) || email.includes(searchTerm);
+            });
+            displayUsers(filteredUsers);
+        });
+
+        function showAccessDenied() {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('accessDenied').style.display = 'block';
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
