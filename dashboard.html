@@ -282,6 +282,26 @@
                 <p>You haven't enrolled in any courses yet. Browse our curriculum and choose the perfect starting point for your poker education.</p>
                 <a href="index.html#courses">Browse Courses</a>
             </div>
+
+            <!-- Premium Member Q&A Section -->
+            <div id="premiumQA" style="display: none; margin-top: 60px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 class="section-title" style="margin: 0;">Ask Will Anything ⭐</h2>
+                    <a href="ask-question.html" style="padding: 12px 30px; background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); color: #ffffff; text-decoration: none; border-radius: 25px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;">
+                        Ask Question
+                    </a>
+                </div>
+                <p style="color: #888; margin-bottom: 30px;">Premium members can ask Will 3 questions per month. View answered questions below.</p>
+            </div>
+
+            <!-- Community Q&A Section -->
+            <h2 class="section-title" style="margin-top: 60px;">Community Q&A</h2>
+            <p style="color: #888; margin-bottom: 30px;">Learn from questions answered by Will Givens</p>
+            <div id="qaGrid" style="display: grid; gap: 25px; margin-bottom: 40px;">
+                <div style="text-align: center; padding: 40px; color: #888;">
+                    <p>Loading questions...</p>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -359,6 +379,67 @@
 
             if (!hasAnyCourse) {
                 document.getElementById('noCoursesMessage').style.display = 'block';
+            }
+
+            // Show premium Q&A section if user is premium
+            if (userData.isPremium) {
+                document.getElementById('premiumQA').style.display = 'block';
+            }
+
+            // Load community Q&A
+            loadCommunityQA();
+        }
+
+        async function loadCommunityQA() {
+            const qaGrid = document.getElementById('qaGrid');
+            
+            try {
+                const { collection, query, where, getDocs, orderBy, limit } = await import('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js');
+                
+                const q = query(
+                    collection(db, 'questions'),
+                    where('isPublic', '==', true),
+                    where('status', '==', 'answered'),
+                    orderBy('answeredAt', 'desc'),
+                    limit(20)
+                );
+                
+                const querySnapshot = await getDocs(q);
+                
+                if (querySnapshot.empty) {
+                    qaGrid.innerHTML = '<div style="text-align: center; padding: 40px; color: #888;"><p>No questions have been answered yet. Check back soon!</p></div>';
+                    return;
+                }
+                
+                qaGrid.innerHTML = '';
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const qaCard = document.createElement('div');
+                    qaCard.style.cssText = 'background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); padding: 30px; border-radius: 12px; border: 2px solid rgba(46, 204, 113, 0.2);';
+                    
+                    qaCard.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                            <div>
+                                <h3 style="color: #ffffff; margin: 0 0 8px 0; font-size: 20px;">${data.subject}</h3>
+                                <p style="color: #888; margin: 0; font-size: 13px;">Asked by ${data.nickname}</p>
+                            </div>
+                            <span style="background: rgba(46, 204, 113, 0.2); color: #2ecc71; padding: 5px 12px; border-radius: 15px; font-size: 11px; font-weight: 700; text-transform: uppercase;">Answered</span>
+                        </div>
+                        <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; border-left: 3px solid #e74c3c; margin-bottom: 20px;">
+                            <p style="color: #d0d0d0; margin: 0; line-height: 1.6; white-space: pre-wrap;">${data.question}</p>
+                        </div>
+                        <div style="background: rgba(46, 204, 113, 0.05); padding: 20px; border-radius: 8px; border-left: 3px solid #2ecc71;">
+                            <p style="color: #888; margin: 0 0 10px 0; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Will's Answer:</p>
+                            <p style="color: #e0e0e0; margin: 0; line-height: 1.8; white-space: pre-wrap;">${data.answer}</p>
+                        </div>
+                    `;
+                    
+                    qaGrid.appendChild(qaCard);
+                });
+                
+            } catch (error) {
+                console.error('Error loading Q&A:', error);
+                qaGrid.innerHTML = '<div style="text-align: center; padding: 40px; color: #e74c3c;"><p>Error loading questions. Please refresh the page.</p></div>';
             }
         }
 
