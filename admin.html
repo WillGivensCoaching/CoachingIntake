@@ -710,7 +710,7 @@
 
         async function loadRevenueChart(period = 'all') {
             try {
-                // Load purchases from Firestore
+                // Load purchases from Firestore purchases collection
                 const purchasesQuery = query(collection(db, 'purchases'), orderBy('purchaseDate', 'asc'));
                 const snapshot = await getDocs(purchasesQuery);
                 
@@ -725,6 +725,49 @@
                         });
                     }
                 });
+
+                // Also include manually granted access from user creation dates
+                // This shows revenue even if admin manually activates courses
+                const prices = { course101: 99, course102: 199, course103: 599, premium: 19.99 };
+                
+                allUsers.forEach(user => {
+                    if (!user.createdAt) return;
+                    
+                    const userDate = new Date(user.createdAt.seconds * 1000);
+                    
+                    // Only add if user has courses and we don't have a purchase record for them
+                    // (to avoid double-counting webhook purchases)
+                    const hasWebhookPurchase = allPurchases.some(p => 
+                        p.date.toDateString() === userDate.toDateString()
+                    );
+                    
+                    if (!hasWebhookPurchase) {
+                        if (user.courses?.course101) {
+                            allPurchases.push({
+                                date: userDate,
+                                amount: prices.course101,
+                                productName: 'Course 101 (Manual)'
+                            });
+                        }
+                        if (user.courses?.course102) {
+                            allPurchases.push({
+                                date: userDate,
+                                amount: prices.course102,
+                                productName: 'Course 102 (Manual)'
+                            });
+                        }
+                        if (user.courses?.course103) {
+                            allPurchases.push({
+                                date: userDate,
+                                amount: prices.course103,
+                                productName: 'Course 103 (Manual)'
+                            });
+                        }
+                    }
+                });
+
+                // Sort by date
+                allPurchases.sort((a, b) => a.date - b.date);
 
                 renderChart(period);
             } catch (error) {
