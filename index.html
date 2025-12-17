@@ -755,8 +755,49 @@
     <header class="header">
         <div class="logo">Will Givens Poker Coaching</div>
         <button class="hamburger" id="hamburger-menu" aria-label="Open navigation">
-            <span></span><span></span><span></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </button>
+                /* Hamburger Icon Styling */
+                .hamburger {
+                    background: none;
+                    border: none;
+                    display: none;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 40px;
+                    height: 40px;
+                    padding: 0;
+                    cursor: pointer;
+                    z-index: 1100;
+                }
+                .hamburger:focus {
+                    outline: none;
+                }
+                .hamburger .bar {
+                    display: block;
+                    width: 28px;
+                    height: 3px;
+                    margin: 4px 0;
+                    background: #e74c3c;
+                    border-radius: 2px;
+                    transition: all 0.3s;
+                }
+                    .hero-title-section {
+                        margin-top: 30px;
+                    }
+                    .hero-badge {
+                        margin-top: 10px;
+                        margin-bottom: 18px;
+                        position: relative;
+                        z-index: 2;
+                        font-size: 11px;
+                        padding: 7px 14px;
+                        max-width: 90vw;
+                        white-space: normal;
+                    }
         <nav class="nav" id="main-nav">
             <a href="#courses">Courses</a>
             <a href="how-it-works.html">How It Works</a>
