@@ -191,6 +191,103 @@
             color: #888;
             font-size: 18px;
         }
+        .nav-tab.active {
+            color: #e74c3c !important;
+        }
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(231, 76, 60, 0.2);
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            border-color: #e74c3c;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.2);
+        }
+        .stat-card h3 {
+            margin: 0 0 15px 0;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            font-weight: 600;
+        }
+        .stat-value {
+            font-size: 42px;
+            font-weight: 700;
+            color: #e74c3c;
+            margin: 0 0 10px 0;
+        }
+        .stat-label {
+            font-size: 13px;
+            color: #666;
+        }
+        .stat-detail {
+            font-size: 14px;
+            color: #ccc;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .course-breakdown {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(231, 76, 60, 0.2);
+            margin-bottom: 30px;
+        }
+        .course-breakdown h2 {
+            margin: 0 0 25px 0;
+            font-size: 24px;
+            color: #fff;
+        }
+        .course-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .course-item:last-child {
+            margin-bottom: 0;
+        }
+        .course-info {
+            flex: 1;
+        }
+        .course-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        .course-price {
+            font-size: 14px;
+            color: #888;
+        }
+        .course-stats {
+            text-align: right;
+        }
+        .course-count {
+            font-size: 32px;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+        .course-revenue {
+            font-size: 14px;
+            color: #2ecc71;
+            margin-top: 5px;
+        }
         @media (max-width: 768px) {
             .header {
                 padding: 15px 20px;
@@ -217,7 +314,8 @@
     <header class="header">
         <div class="logo">Will Givens Poker Coaching</div>
         <div class="user-menu">
-            <a href="admin.html" style="color: #d0d0d0; text-decoration: none; margin-right: 20px; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Users</a>
+            <a href="#" id="usersTab" class="nav-tab active" style="color: #e74c3c; text-decoration: none; margin-right: 20px; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Users</a>
+            <a href="#" id="analyticsTab" class="nav-tab" style="color: #d0d0d0; text-decoration: none; margin-right: 20px; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Analytics</a>
             <a href="admin-questions.html" style="color: #d0d0d0; text-decoration: none; margin-right: 20px; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Questions</a>
             <div class="admin-badge">🔑 Admin</div>
             <button class="logout-btn" id="logoutBtn">Logout</button>
@@ -233,32 +331,115 @@
         </div>
 
         <div id="adminContent" style="display: none;">
-            <h1 class="page-title">User Management</h1>
+            <!-- Users Tab -->
+            <div id="usersContent">
+                <h1 class="page-title">User Management</h1>
 
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="🔍 Search by name or email...">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="🔍 Search by name or email...">
+                </div>
+
+                <div class="users-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Joined</th>
+                                <th>Community</th>
+                                <th>Premium</th>
+                                <th>Course 101</th>
+                                <th>Course 102</th>
+                                <th>Course 103</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <tr>
+                                <td colspan="8" class="no-users">No users found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-            <div class="users-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Joined</th>
-                            <th>Community</th>
-                            <th>Premium</th>
-                            <th>Course 101</th>
-                            <th>Course 102</th>
-                            <th>Course 103</th>
-                        </tr>
-                    </thead>
-                    <tbody id="usersTableBody">
-                        <tr>
-                            <td colspan="8" class="no-users">No users found</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- Analytics Tab -->
+            <div id="analyticsContent" style="display: none;">
+                <h1 class="page-title">Financial Analytics</h1>
+
+                <div class="analytics-grid">
+                    <div class="stat-card">
+                        <h3>📊 Total Revenue</h3>
+                        <div class="stat-value" id="totalRevenue">$0</div>
+                        <div class="stat-label">All-time earnings</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>💰 Monthly Recurring</h3>
+                        <div class="stat-value" id="mrr">$0</div>
+                        <div class="stat-label">MRR from subscriptions</div>
+                        <div class="stat-detail"><span id="activeSubscribers">0</span> active subscribers</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>🎓 Total Students</h3>
+                        <div class="stat-value" id="totalStudents">0</div>
+                        <div class="stat-label">Unique course purchasers</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>👥 Total Users</h3>
+                        <div class="stat-value" id="totalUsers">0</div>
+                        <div class="stat-label">Registered accounts</div>
+                        <div class="stat-detail"><span id="communityMembers">0</span> with community access</div>
+                    </div>
+                </div>
+
+                <div class="course-breakdown">
+                    <h2>Course Performance</h2>
+                    <div class="course-item">
+                        <div class="course-info">
+                            <div class="course-name">Course 101: The Basics</div>
+                            <div class="course-price">$99.00 per purchase</div>
+                        </div>
+                        <div class="course-stats">
+                            <div class="course-count" id="course101Count">0</div>
+                            <div class="course-revenue" id="course101Revenue">$0.00</div>
+                        </div>
+                    </div>
+
+                    <div class="course-item">
+                        <div class="course-info">
+                            <div class="course-name">Course 102: Advanced Post-Flop</div>
+                            <div class="course-price">$199.00 per purchase</div>
+                        </div>
+                        <div class="course-stats">
+                            <div class="course-count" id="course102Count">0</div>
+                            <div class="course-revenue" id="course102Revenue">$0.00</div>
+                        </div>
+                    </div>
+
+                    <div class="course-item">
+                        <div class="course-info">
+                            <div class="course-name">Course 103: GTO Solver Strategy</div>
+                            <div class="course-price">$599.00 per purchase</div>
+                        </div>
+                        <div class="course-stats">
+                            <div class="course-count" id="course103Count">0</div>
+                            <div class="course-revenue" id="course103Revenue">$0.00</div>
+                        </div>
+                    </div>
+
+                    <div class="course-item">
+                        <div class="course-info">
+                            <div class="course-name">Premium Membership</div>
+                            <div class="course-price">$19.99/month subscription</div>
+                        </div>
+                        <div class="course-stats">
+                            <div class="course-count" id="premiumCount">0</div>
+                            <div class="course-revenue" id="premiumRevenue">$0.00 MRR</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -434,6 +615,98 @@
             });
             displayUsers(filteredUsers);
         });
+
+        // Tab switching
+        document.getElementById('usersTab').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('usersContent').style.display = 'block';
+            document.getElementById('analyticsContent').style.display = 'none';
+            document.getElementById('usersTab').classList.add('active');
+            document.getElementById('analyticsTab').classList.remove('active');
+            document.getElementById('usersTab').style.color = '#e74c3c';
+            document.getElementById('analyticsTab').style.color = '#d0d0d0';
+        });
+
+        document.getElementById('analyticsTab').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('usersContent').style.display = 'none';
+            document.getElementById('analyticsContent').style.display = 'block';
+            document.getElementById('analyticsTab').classList.add('active');
+            document.getElementById('usersTab').classList.remove('active');
+            document.getElementById('analyticsTab').style.color = '#e74c3c';
+            document.getElementById('usersTab').style.color = '#d0d0d0';
+            loadAnalytics();
+        });
+
+        // Analytics calculation
+        function loadAnalytics() {
+            if (allUsers.length === 0) return;
+
+            // Course prices
+            const prices = {
+                course101: 99,
+                course102: 199,
+                course103: 599,
+                premium: 19.99
+            };
+
+            // Count users with each access
+            let course101Count = 0;
+            let course102Count = 0;
+            let course103Count = 0;
+            let premiumCount = 0;
+            let communityCount = 0;
+            let uniqueStudents = new Set();
+
+            allUsers.forEach(user => {
+                if (user.courses?.course101) {
+                    course101Count++;
+                    uniqueStudents.add(user.id);
+                }
+                if (user.courses?.course102) {
+                    course102Count++;
+                    uniqueStudents.add(user.id);
+                }
+                if (user.courses?.course103) {
+                    course103Count++;
+                    uniqueStudents.add(user.id);
+                }
+                if (user.isPremium) {
+                    premiumCount++;
+                }
+                if (user.hasCommunityAccess) {
+                    communityCount++;
+                }
+            });
+
+            // Calculate revenue
+            const course101Revenue = course101Count * prices.course101;
+            const course102Revenue = course102Count * prices.course102;
+            const course103Revenue = course103Count * prices.course103;
+            const totalRevenue = course101Revenue + course102Revenue + course103Revenue;
+            const mrr = premiumCount * prices.premium;
+
+            // Update UI
+            document.getElementById('totalRevenue').textContent = `$${totalRevenue.toLocaleString()}`;
+            document.getElementById('mrr').textContent = `$${mrr.toFixed(2)}`;
+            document.getElementById('activeSubscribers').textContent = premiumCount;
+            document.getElementById('totalStudents').textContent = uniqueStudents.size;
+            document.getElementById('totalUsers').textContent = allUsers.length;
+            document.getElementById('communityMembers').textContent = communityCount;
+
+            // Course breakdown
+            document.getElementById('course101Count').textContent = course101Count;
+            document.getElementById('course101Revenue').textContent = `$${course101Revenue.toLocaleString()}.00 revenue`;
+            
+            document.getElementById('course102Count').textContent = course102Count;
+            document.getElementById('course102Revenue').textContent = `$${course102Revenue.toLocaleString()}.00 revenue`;
+            
+            document.getElementById('course103Count').textContent = course103Count;
+            document.getElementById('course103Revenue').textContent = `$${course103Revenue.toLocaleString()}.00 revenue`;
+            
+            document.getElementById('premiumCount').textContent = premiumCount;
+            document.getElementById('premiumRevenue').textContent = `$${mrr.toFixed(2)} MRR`;
+        }
 
         function showAccessDenied() {
             document.getElementById('loadingState').style.display = 'none';
