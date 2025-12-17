@@ -19,10 +19,10 @@ const db = admin.firestore();
 
 // Course ID to Firestore field mapping
 const PRODUCT_MAP = {
-  'price_15KNgH8x7tmbN9YXjOfG': { type: 'course', field: 'courses.course101' },
-  'price_15KeOsH8x7tmbNszMsYt5G': { type: 'course', field: 'courses.course102' },
-  'price_15KtPOH8x7tmbNUUJufeh': { type: 'course', field: 'courses.course103' },
-  'price_15RzLHRx2btnNhgWsCrYf': { type: 'premium', field: 'isPremium' },
+  'price_15KNgH8x7tmbN9YXjOfG': { type: 'course', field: 'courses.course101', name: 'Course 101', price: 99 },
+  'price_15KeOsH8x7tmbNszMsYt5G': { type: 'course', field: 'courses.course102', name: 'Course 102', price: 199 },
+  'price_15KtPOH8x7tmbNUUJufeh': { type: 'course', field: 'courses.course103', name: 'Course 103', price: 599 },
+  'price_15RzLHRx2btnNhgWsCrYf': { type: 'premium', field: 'isPremium', name: 'Premium Membership', price: 19.99 },
 };
 
 module.exports = async (req, res) => {
@@ -112,12 +112,40 @@ async function handleCheckoutCompleted(session) {
       await db.collection('users').doc(userId).update({
         [productInfo.field]: true,
       });
+      
+      // Record purchase in purchases collection for analytics
+      await db.collection('purchases').add({
+        userId: userId,
+        userEmail: customerEmail,
+        productName: productInfo.name,
+        productType: 'course',
+        amount: productInfo.price,
+        priceId: priceId,
+        stripeSessionId: session.id,
+        purchaseDate: admin.firestore.FieldValue.serverTimestamp(),
+      });
+      
       console.log(`Granted ${productInfo.field} to ${customerEmail}`);
     } else if (productInfo.type === 'premium') {
       await db.collection('users').doc(userId).update({
         isPremium: true,
         hasCommunityAccess: true,
         questionsThisMonth: 0,
+      });
+      
+      // Record subscription start
+      await db.collection('purchases').add({
+        userId: userId,
+        userEmail: customerEmail,
+        productName: productInfo.name,
+        productType: 'subscription',
+        amount: productInfo.price,
+        priceId: priceId,
+        stripeSessionId: session.id,
+        purchaseDate: admin.firestore.FieldValue.serverTimestamp(),
+      });
+      
+      console.log(`Granted premium access to ${customerEmail}`);
       });
       console.log(`Granted premium access to ${customerEmail}`);
     }
