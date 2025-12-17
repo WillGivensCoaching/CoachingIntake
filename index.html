@@ -753,6 +753,40 @@
 <body>
 
     <header class="header">
+                <button class="hamburger" id="hamburger-menu" aria-label="Open navigation">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                /* Hamburger Icon Styling */
+                .hamburger {
+                    background: none;
+                    border: none;
+                    display: none;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 40px;
+                    height: 40px;
+                    padding: 0;
+                    cursor: pointer;
+                    z-index: 1100;
+                }
+                .hamburger:focus {
+                    outline: none;
+                }
+                .hamburger .bar {
+                    display: block;
+                    width: 28px;
+                    height: 3px;
+                    margin: 4px 0;
+                    background: #e74c3c;
+                    border-radius: 2px;
+                    transition: all 0.3s;
+                }
+                @media (max-width: 900px) {
+                    .hamburger { display: flex; }
+                }
         <div class="logo">Will Givens Poker Coaching</div>
         <!-- Hamburger menu removed to eliminate white dot -->
         <nav class="nav" id="main-nav">
