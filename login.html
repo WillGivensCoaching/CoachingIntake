@@ -163,11 +163,25 @@
             <a href="signup.html">Create Account</a>
             <span class="divider">|</span>
             <a href="index.html">Back to Home</a>
+            <br><a href="#" id="forgot-password-link" style="font-size:13px;display:inline-block;margin-top:10px;">Forgot Password?</a>
+        </div>
+
+        <div id="forgot-password-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;">
+            <div style="background:#181818;padding:32px 24px 24px 24px;border-radius:12px;max-width:350px;margin:auto;box-shadow:0 8px 32px #000;position:relative;">
+                <h3 style="color:#e74c3c;margin-top:0;">Reset Password</h3>
+                <form id="forgot-password-form">
+                    <label for="reset-email" style="display:block;margin-bottom:8px;">Enter your email address:</label>
+                    <input type="email" id="reset-email" name="reset-email" required style="width:100%;padding:10px 8px;margin-bottom:16px;border-radius:4px;border:1px solid #333;background:#222;color:#fff;">
+                    <button type="submit" style="background:#e74c3c;color:#fff;padding:10px 24px;border:none;border-radius:4px;font-weight:600;">Send Reset Link</button>
+                    <button type="button" id="close-forgot-modal" style="margin-left:10px;background:#444;color:#fff;padding:10px 18px;border:none;border-radius:4px;">Cancel</button>
+                </form>
+                <div id="forgot-password-message" style="margin-top:12px;font-size:14px;"></div>
+            </div>
         </div>
     </div>
 
     <script type="module">
-        import { auth, signInWithEmailAndPassword } from './firebase-config.js';
+        import { auth, signInWithEmailAndPassword, sendPasswordResetEmail } from './firebase-config.js';
 
         const loginForm = document.getElementById('loginForm');
         const loginBtn = document.getElementById('loginBtn');
@@ -176,19 +190,15 @@
 
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-
             loginBtn.disabled = true;
             loginBtn.textContent = 'Logging in...';
             errorMessage.style.display = 'none';
-
             try {
                 await signInWithEmailAndPassword(auth, email, password);
                 successMessage.textContent = 'Login successful! Redirecting...';
                 successMessage.style.display = 'block';
-                
                 setTimeout(() => {
                     window.location.href = 'dashboard.html';
                 }, 1000);
@@ -201,13 +211,34 @@
                 } else if (error.code === 'auth/too-many-requests') {
                     message = 'Too many failed attempts. Please try again later.';
                 }
-                
                 errorMessage.textContent = message;
                 errorMessage.style.display = 'block';
                 loginBtn.disabled = false;
                 loginBtn.textContent = 'Login';
             }
         });
+
+        // Forgot Password Modal Logic
+        document.getElementById('forgot-password-link').onclick = function(e) {
+            e.preventDefault();
+            document.getElementById('forgot-password-modal').style.display = 'flex';
+        };
+        document.getElementById('close-forgot-modal').onclick = function() {
+            document.getElementById('forgot-password-modal').style.display = 'none';
+            document.getElementById('forgot-password-message').innerText = '';
+        };
+        document.getElementById('forgot-password-form').onsubmit = async function(e) {
+            e.preventDefault();
+            var email = document.getElementById('reset-email').value;
+            var msg = document.getElementById('forgot-password-message');
+            msg.innerText = 'Sending reset email...';
+            try {
+                await sendPasswordResetEmail(auth, email);
+                msg.innerText = 'Password reset email sent! Check your inbox.';
+            } catch (error) {
+                msg.innerText = 'Error: ' + error.message;
+            }
+        };
     </script>
 </body>
 </html>
