@@ -271,16 +271,13 @@
         <div id="dashboardContent" style="display: none;">
             <div class="welcome-section">
                 <h1>Welcome back, <span id="userFirstName">Student</span>! 👋</h1>
-                <p>Access your poker coaching courses and continue your journey to mastery</p>
+                <p>Access your poker coaching materials and continue your journey to mastery</p>
             </div>
 
-            <h2 class="section-title">My Courses</h2>
-            <div class="courses-grid" id="coursesGrid"></div>
-
-            <div id="noCoursesMessage" class="locked-message" style="display: none;">
+            <h2 class="section-title">My Coaching Materials</h2>
+            <div id="noCoursesMessage" class="locked-message" style="display: block;">
                 <h3>🎓 Ready to Start Your Journey?</h3>
-                <p>You haven't enrolled in any courses yet. Browse our curriculum and choose the perfect starting point for your poker education.</p>
-                <a href="index.html#courses">Browse Courses</a>
+                <p>You haven't started any coaching programs yet. Contact us to get started.</p>
             </div>
 
             <!-- Premium Member Q&A Section -->
@@ -339,26 +336,7 @@
     <script type="module">
         import { auth, db, signOut, onAuthStateChanged, doc, getDoc } from './firebase-config.js';
 
-        const courses = [
-            {
-                id: 'course101',
-                title: 'Course 101: NLH Fundamentals',
-                description: 'Master the fundamentals of No-Limit Hold\'em including hand equity, pot odds, GTO pre-flop charts, and bankroll management.',
-                url: 'course101.html'
-            },
-            {
-                id: 'course102',
-                title: 'Course 102: Advanced Post-Flop Play',
-                description: 'Dive deep into advanced post-flop strategy, c-betting, turn and river play, and exploiting opponent leaks.',
-                url: 'course102.html'
-            },
-            {
-                id: 'course103',
-                title: 'Course 103: Exploitative & Live Play',
-                description: 'Learn Game Theory Optimal principles, PioSolver analysis, and strategies for high-stakes environments.',
-                url: 'course103.html'
-            }
-        ];
+        // Removed courses array
 
         onAuthStateChanged(auth, async (user) => {
             if (user) {
@@ -381,36 +359,8 @@
             document.getElementById('userName').textContent = `${userData.firstName} ${userData.lastName}`;
             document.getElementById('userFirstName').textContent = userData.firstName;
 
-            const coursesGrid = document.getElementById('coursesGrid');
-            const userCourses = userData.courses || {};
-            
-            let hasAnyCourse = false;
-
-            courses.forEach(course => {
-                const hasAccess = userCourses[course.id] === true;
-                if (hasAccess) hasAnyCourse = true;
-
-                const courseCard = document.createElement('div');
-                courseCard.className = `course-card ${!hasAccess ? 'locked' : ''}`;
-                
-                courseCard.innerHTML = `
-                    <div class="course-badge ${hasAccess ? 'badge-unlocked' : 'badge-locked'}">
-                        ${hasAccess ? '✓ Unlocked' : '🔒 Locked'}
-                    </div>
-                    <h3>${course.title}</h3>
-                    <p>${course.description}</p>
-                    ${hasAccess 
-                        ? `<a href="${course.url}" class="course-btn">Access Course</a>`
-                        : `<a href="index.html#courses" class="course-btn" style="background: #2ecc71; border: 2px solid #2ecc71; color: #ffffff; box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);">Purchase Now</a>`
-                    }
-                `;
-                
-                coursesGrid.appendChild(courseCard);
-            });
-
-            if (!hasAnyCourse) {
-                document.getElementById('noCoursesMessage').style.display = 'block';
-            }
+            // Removed course rendering logic
+            document.getElementById('noCoursesMessage').style.display = 'block';
 
             // Show premium Q&A section if user is premium, otherwise show upgrade prompt
             if (userData.isPremium) {

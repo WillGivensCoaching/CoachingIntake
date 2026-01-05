@@ -19,9 +19,7 @@ const db = admin.firestore();
 
 // Course ID to Firestore field mapping
 const PRODUCT_MAP = {
-  'price_15KNgH8x7tmbN9YXjOfG': { type: 'course', field: 'courses.course101', name: 'Course 101', price: 99 },
-  'price_15KeOsH8x7tmbNszMsYt5G': { type: 'course', field: 'courses.course102', name: 'Course 102', price: 199 },
-  'price_15KtPOH8x7tmbNUUJufeh': { type: 'course', field: 'courses.course103', name: 'Course 103', price: 599 },
+  // Removed course product references
   'price_15RzLHRx2btnNhgWsCrYf': { type: 'premium', field: 'isPremium', name: 'Premium Membership', price: 19.99 },
 };
 
