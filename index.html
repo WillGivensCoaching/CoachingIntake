@@ -810,7 +810,6 @@
                         </div>
                     </div>
                     <a href="#apply" class="cta-button">Start Your Journey</a>
-                    <a href="#courses" class="cta-button cta-secondary">View Courses</a>
                 </div>
             </div>
             
@@ -854,7 +853,7 @@
 
         <div class="section-separator"></div>
 
-        <!-- Removed curriculum section and course cards -->
+        <!-- Curriculum section and course cards fully removed -->
         <div class="section-separator"></div>
 
         <section id="coaching-services" class="services-section">
@@ -1061,34 +1060,7 @@
 
 
 
-    <!-- Purchase Authentication Check -->
-    <script type="module">
-        import { auth } from './firebase-config.js';
-        import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
-
-        // Handle purchase button clicks
-        document.querySelectorAll('.purchase-btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const stripeUrl = this.getAttribute('data-stripe');
-                const courseId = this.getAttribute('data-course');
-                
-                onAuthStateChanged(auth, (user) => {
-                    if (user) {
-                        // User is logged in, proceed to Stripe
-                        window.open(stripeUrl, '_blank');
-                    } else {
-                        // User not logged in, redirect to signup with course info
-                        sessionStorage.setItem('intendedPurchase', JSON.stringify({
-                            courseId: courseId,
-                            stripeUrl: stripeUrl
-                        }));
-                        window.location.href = 'signup.html';
-                    }
-                });
-            });
-        });
-    </script>
+    <!-- Removed purchase authentication and course purchase logic -->
     <script>
         // Hamburger menu toggle
         const hamburger = document.getElementById('hamburger-menu');
